@@ -1,0 +1,1 @@
+import{j as s}from"./jsx-runtime-D0bAEALd.js";import{M as a}from"./Money-t5T8g3vm.js";function x({price:t,compareAtPrice:e}){return s.jsxs("div",{className:"product-price inline-flex items-baseline gap-3",children:[t&&s.jsx(a,{data:t}),e&&s.jsx("s",{className:"text-xl text-gray-400",children:s.jsx(a,{data:e})})]})}export{x as P};

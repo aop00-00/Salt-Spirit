@@ -1,0 +1,25 @@
+/**
+ * Configure Tailwind v4 in this file using CSS variables and directives:
+ * https://tailwindcss.com/docs/v4-beta#css-first-configuration
+ */
+
+@import 'tailwindcss';
+
+@theme {
+    --color-primary: #1D1E20;
+    /* Basalt */
+    --color-secondary: #96938E;
+    /* Mineral Grey */
+    --color-base: #F4F4F4;
+    /* Spirit White */
+
+    --color-accent-blue: #0063AD;
+    /* Pure Blue */
+    --color-accent-red: #E00B0B;
+    /* Vital Red */
+    --color-accent-purple: #6813AA;
+    /* Hydra-rest */
+
+    --font-helvetica: 'Helvetica Neue Roman', sans-serif;
+    --font-sans: 'Outfit', sans-serif;
+}
