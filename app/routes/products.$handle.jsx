@@ -1,4 +1,5 @@
 import { useLoaderData } from 'react-router';
+import { useEffect } from 'react';
 import {
   getSelectedProductOptions,
   Analytics,
@@ -142,6 +143,18 @@ export default function Product() {
     product.selectedOrFirstAvailableVariant,
     getAdjacentAndFirstAvailableVariants(product),
   );
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.fbq && product) {
+      window.fbq('track', 'ViewContent', {
+        content_name: product.title,
+        content_ids: [product.id.split('/').pop()],
+        content_type: 'product',
+        value: parseFloat(selectedVariant?.price?.amount || 0),
+        currency: selectedVariant?.price?.currencyCode || 'MXN',
+      });
+    }
+  }, [product?.id, selectedVariant?.id]);
 
   // Sets the search param to the selected variant without navigation
   // only when no search params are set in the url

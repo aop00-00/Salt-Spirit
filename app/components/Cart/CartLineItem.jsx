@@ -19,9 +19,9 @@ export function CartLineItem({ layout, line }) {
   const { close } = useAside();
 
   return (
-    <li key={id} className="cart-line flex gap-4 py-4 border-b border-gray-100 last:border-0 relative group">
+    <li key={id} className="cart-line flex gap-4 py-4 relative group">
       {image && (
-        <div className="shrink-0 aspect-square w-[90px] h-[90px] rounded-2xl overflow-hidden bg-gray-50 shadow-sm border border-gray-100">
+        <div className="shrink-0 aspect-square w-[100px] h-[100px] rounded-[1.5rem] overflow-hidden bg-gray-100 p-2">
           <Image
             alt={title}
             aspectRatio="1/1"
@@ -29,41 +29,43 @@ export function CartLineItem({ layout, line }) {
             height={100}
             loading="lazy"
             width={100}
-            className="w-full h-full object-cover mix-blend-multiply"
+            className="w-full h-full object-contain mix-blend-multiply"
           />
         </div>
       )}
 
       <div className="flex-1 flex flex-col justify-between py-1">
-        <div>
-          <div className="flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-2">
-            <Link
-              prefetch="intent"
-              to={lineItemUrl}
-              onClick={() => {
-                if (layout === 'aside') {
-                  close();
-                }
-              }}
-              className="font-bold text-base text-gray-900 leading-tight hover:underline decoration-1 underline-offset-2 pr-2"
-            >
-              {product.title}
-            </Link>
-            <ProductPrice price={line?.cost?.totalAmount} className="font-semibold text-sm text-gray-900 whitespace-nowrap mt-1 sm:mt-0" />
-          </div>
+        <div className="flex justify-between items-start">
+          <Link
+            prefetch="intent"
+            to={lineItemUrl}
+            onClick={() => {
+              if (layout === 'aside') {
+                close();
+              }
+            }}
+            className="font-medium text-[15px] text-gray-400 leading-[1.2] hover:underline decoration-1 underline-offset-2 pr-8"
+          >
+            {product.title}
+          </Link>
 
-          {selectedOptions.length > 0 && (
-            <ul className="mt-1 space-y-1">
-              {selectedOptions.map((option) => (
-                <li key={option.name} className="text-xs text-gray-500 font-medium tracking-wide uppercase">
-                  {option.name}: {option.value}
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="absolute right-0 top-6">
+            <CartLineRemoveButton lineIds={[id]} disabled={!!line.isOptimistic} />
+          </div>
         </div>
 
-        <div className="flex items-center justify-between mt-3">
+        {selectedOptions.length > 0 && selectedOptions[0].value !== 'Default Title' && (
+          <ul className="mt-1 space-y-1">
+            {selectedOptions.map((option) => (
+              <li key={option.name} className="text-[11px] text-gray-400 font-medium tracking-wide">
+                {option.name}: {option.value}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="flex items-end justify-between mt-auto pt-2">
+          <ProductPrice price={line?.cost?.totalAmount} className="font-extrabold text-[#111] text-lg tracking-tight" />
           <CartLineQuantity line={line} />
         </div>
       </div>
@@ -85,20 +87,20 @@ function CartLineQuantity({ line }) {
 
   return (
     <div className="flex items-center gap-3">
-      <div className="flex items-center border border-gray-200 rounded-full bg-white shadow-sm overflow-hidden h-8">
+      <div className="flex items-center bg-gray-100/80 rounded-full p-1 gap-1">
         <CartLineUpdateButton lines={[{ id: lineId, quantity: prevQuantity }]}>
           <button
             aria-label="Decrease quantity"
             disabled={quantity <= 1 || !!isOptimistic}
             name="decrease-quantity"
             value={prevQuantity}
-            className="w-8 h-full flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 text-gray-600"
+            className="w-7 h-7 flex items-center justify-center hover:bg-gray-200 rounded-full transition-colors disabled:opacity-50 text-[#1ab75a] font-bold text-lg"
           >
-            <span>&#8722;</span>
+            <span className="mb-0.5">&#8722;</span>
           </button>
         </CartLineUpdateButton>
 
-        <span className="w-8 text-center text-sm font-semibold text-gray-900 tabular-nums select-none">
+        <span className="w-6 text-center text-sm font-bold text-[#111] tabular-nums select-none">
           {quantity}
         </span>
 
@@ -108,14 +110,12 @@ function CartLineQuantity({ line }) {
             name="increase-quantity"
             value={nextQuantity}
             disabled={!!isOptimistic}
-            className="w-8 h-full flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 text-gray-600"
+            className="w-7 h-7 bg-[#1ab75a] text-white rounded-full flex items-center justify-center hover:bg-[#159a4c] transition-colors disabled:opacity-50 font-bold text-lg"
           >
-            <span>&#43;</span>
+            <span className="mb-0.5">&#43;</span>
           </button>
         </CartLineUpdateButton>
       </div>
-
-      <CartLineRemoveButton lineIds={[lineId]} disabled={!!isOptimistic} />
     </div>
   );
 }
@@ -137,8 +137,8 @@ function CartLineRemoveButton({ lineIds, disabled }) {
       action={CartForm.ACTIONS.LinesRemove}
       inputs={{ lineIds }}
     >
-      <button disabled={disabled} type="submit" className="text-xs text-gray-400 underline hover:text-red-500 transition-colors">
-        Remove
+      <button disabled={disabled} type="submit" className="text-red-500 hover:text-red-600 transition-colors p-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-trash-2"><path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /><line x1="10" x2="10" y1="11" y2="17" /><line x1="14" x2="14" y1="11" y2="17" /></svg>
       </button>
     </CartForm>
   );

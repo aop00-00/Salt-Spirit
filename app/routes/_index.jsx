@@ -101,7 +101,7 @@ export default function Homepage() {
   ];
 
   return (
-    <div className="home w-full overflow-x-hidden">
+    <div className="home w-full">
       {/* 
         Scroll Track: 400vh height gives the user "space" to scroll through 
         while the content stays pinned (sticky). 

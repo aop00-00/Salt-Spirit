@@ -1,7 +1,6 @@
 import { cn } from "~/lib/utils";
 import React from "react";
 import { Link } from "react-router";
-import { Linkedin, Twitter } from 'lucide-react';
 
 const tape = <svg xmlns="http://www.w3.org/2000/svg" width="95" height="80" viewBox="0 0 95 80" fill="none">
     <path d="M1 45L70.282 5L88.282 36.1769L19 76.1769L1 45Z" fill="#222222" />
@@ -46,7 +45,8 @@ export const NewFooter = () => {
                         <div className='flex flex-col gap-1 md:gap-4'>
                             <h4 className='uppercase whitespace-nowrap font-display text-md text-neutral-400 font-semibold'>Company</h4>
                             <div className="flex flex-col gap-2 md:flex-col text-sm text-neutral items-start ">
-                                <Link className='text-neutral-500 whitespace-nowrap font-medium hover:text-black' to="/pages/about">About Us</Link>
+                                <Link className='text-neutral-500 whitespace-nowrap font-medium hover:text-black' to="/about">About Us</Link>
+                                <Link className='text-neutral-500 whitespace-nowrap font-medium hover:text-black' to="/products">Products</Link>
                             </div>
                         </div>
 
