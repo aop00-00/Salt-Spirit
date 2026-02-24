@@ -1,4 +1,8 @@
-import { Analytics, getShopAnalytics, useNonce } from '@shopify/hydrogen';
+import {
+  Analytics,
+  getShopAnalytics,
+  useNonce,
+} from '@shopify/hydrogen';
 import {
   Outlet,
   useRouteError,
@@ -8,7 +12,9 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteLoaderData,
+  useLocation,
 } from 'react-router';
+import { useEffect } from 'react';
 
 export const meta = () => {
   return [{ title: 'Salt & Spirit' }, { name: 'description', content: 'Salt & Spirit Store' }];
@@ -80,10 +86,13 @@ export async function loader(args) {
 
   const { storefront, env } = args.context;
 
+  // OVERRIDE: Prevent Oxygen from using '71t8nk-n9.myshopify.com'
+  const CANONICAL_DOMAIN = 'saltandspirit.com.mx';
+
   return {
     ...deferredData,
     ...criticalData,
-    publicStoreDomain: env.PUBLIC_STORE_DOMAIN,
+    publicStoreDomain: CANONICAL_DOMAIN,
     shop: getShopAnalytics({
       storefront,
       publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
@@ -154,6 +163,18 @@ function loadDeferredData({ context }) {
  */
 export function Layout({ children }) {
   const nonce = useNonce();
+  const location = useLocation();
+
+  // Handle route change PageViews (not initial load)
+  useEffect(() => {
+    // We only want to track if it's NOT the very first mount 
+    // because the direct <script> tag handles the initial load
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'PageView');
+    }
+  }, [location.pathname]);
+
+  const META_PIXEL_ID = '1276252354329816';
 
   return (
     <html lang="es" className="w-full max-w-full">
@@ -165,6 +186,30 @@ export function Layout({ children }) {
         <link rel="stylesheet" href={appStyles}></link>
         <Meta />
         <Links />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${META_PIXEL_ID}');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+          />
+        </noscript>
       </head>
       <body className="w-full max-w-full antialiased">
         {children}

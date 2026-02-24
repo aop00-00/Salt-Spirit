@@ -17,6 +17,21 @@ export function AddToCartButton({
   onClick,
   className = '',
 }) {
+  const handleMetaPixelEvent = (e) => {
+    // Call the original onClick if it was passed
+    if (onClick) onClick(e);
+
+    // Trigger Meta Pixel AddToCart event
+    if (typeof window !== 'undefined' && window.fbq) {
+      const productTitle = lines?.[0]?.merchandise?.product?.title || 'Producto';
+      window.fbq('track', 'AddToCart', {
+        content_name: productTitle,
+        content_type: 'product',
+        // Optional: you can extract price from lines?.[0]?.merchandise?.price
+      });
+    }
+  };
+
   return (
     <CartForm route="/cart" inputs={{ lines }} action={CartForm.ACTIONS.LinesAdd}>
       {(fetcher) => (
@@ -29,7 +44,7 @@ export function AddToCartButton({
           <button
             type="submit"
             className={className}
-            onClick={onClick}
+            onClick={handleMetaPixelEvent}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
             {children}
