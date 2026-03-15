@@ -1,0 +1,605 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\dario\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.8.0
+2 info using node@v20.19.5
+3 silly config load:file:C:\Users\dario\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\dario\Desktop\WebDev\SALTANDSPIRIT\Salt-Spirit\.npmrc
+5 silly config load:file:C:\Users\dario\.npmrc
+6 silly config load:file:C:\Users\dario\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--package-lock-only" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\dario\Desktop\WebDev\SALTANDSPIRIT\Salt-Spirit\.npm-cache\_logs\2026-03-15T19_55_12_213Z-
+10 verbose logfile C:\Users\dario\Desktop\WebDev\SALTANDSPIRIT\Salt-Spirit\.npm-cache\_logs\2026-03-15T19_55_12_213Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with ECONNREFUSED
+13 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+14 silly Conflicting override sets <ref *1> OverrideSet {
+14 silly Conflicting override sets   parent: OverrideSet {
+14 silly Conflicting override sets     parent: undefined,
+14 silly Conflicting override sets     children: Map(5) {
+14 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+14 silly Conflicting override sets       'react-router' => [OverrideSet],
+14 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+14 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+14 silly Conflicting override sets       '@react-router/fs-routes' => [Circular *1]
+14 silly Conflicting override sets     }
+14 silly Conflicting override sets   },
+14 silly Conflicting override sets   children: Map(0) {},
+14 silly Conflicting override sets   name: '@react-router/fs-routes',
+14 silly Conflicting override sets   key: '@react-router/fs-routes',
+14 silly Conflicting override sets   keySpec: '*',
+14 silly Conflicting override sets   value: '7.9.2'
+14 silly Conflicting override sets } <ref *1> OverrideSet {
+14 silly Conflicting override sets   parent: OverrideSet {
+14 silly Conflicting override sets     parent: undefined,
+14 silly Conflicting override sets     children: Map(5) {
+14 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+14 silly Conflicting override sets       'react-router' => [OverrideSet],
+14 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+14 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+14 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+14 silly Conflicting override sets     }
+14 silly Conflicting override sets   },
+14 silly Conflicting override sets   children: Map(0) {},
+14 silly Conflicting override sets   name: '@react-router/dev',
+14 silly Conflicting override sets   key: '@react-router/dev',
+14 silly Conflicting override sets   keySpec: '*',
+14 silly Conflicting override sets   value: '7.9.2'
+14 silly Conflicting override sets }
+15 silly Conflicting override sets balanced-match
+16 silly Conflicting override sets <ref *1> OverrideSet {
+16 silly Conflicting override sets   parent: OverrideSet {
+16 silly Conflicting override sets     parent: undefined,
+16 silly Conflicting override sets     children: Map(5) {
+16 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+16 silly Conflicting override sets       'react-router' => [OverrideSet],
+16 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+16 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+16 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+16 silly Conflicting override sets     }
+16 silly Conflicting override sets   },
+16 silly Conflicting override sets   children: Map(0) {},
+16 silly Conflicting override sets   name: '@react-router/dev',
+16 silly Conflicting override sets   key: '@react-router/dev',
+16 silly Conflicting override sets   keySpec: '*',
+16 silly Conflicting override sets   value: '7.9.2'
+16 silly Conflicting override sets } <ref *1> OverrideSet {
+16 silly Conflicting override sets   parent: OverrideSet {
+16 silly Conflicting override sets     parent: undefined,
+16 silly Conflicting override sets     children: Map(5) {
+16 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+16 silly Conflicting override sets       'react-router' => [OverrideSet],
+16 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+16 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+16 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+16 silly Conflicting override sets     }
+16 silly Conflicting override sets   },
+16 silly Conflicting override sets   children: Map(0) {},
+16 silly Conflicting override sets   name: '@shopify/hydrogen',
+16 silly Conflicting override sets   key: '@shopify/hydrogen',
+16 silly Conflicting override sets   keySpec: '*',
+16 silly Conflicting override sets   value: '2025.7.0'
+16 silly Conflicting override sets }
+17 silly Conflicting override sets isbot
+18 silly Conflicting override sets <ref *1> OverrideSet {
+18 silly Conflicting override sets   parent: OverrideSet {
+18 silly Conflicting override sets     parent: undefined,
+18 silly Conflicting override sets     children: Map(5) {
+18 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+18 silly Conflicting override sets       'react-router' => [OverrideSet],
+18 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+18 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+18 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+18 silly Conflicting override sets     }
+18 silly Conflicting override sets   },
+18 silly Conflicting override sets   children: Map(0) {},
+18 silly Conflicting override sets   name: '@react-router/dev',
+18 silly Conflicting override sets   key: '@react-router/dev',
+18 silly Conflicting override sets   keySpec: '*',
+18 silly Conflicting override sets   value: '7.9.2'
+18 silly Conflicting override sets } <ref *1> OverrideSet {
+18 silly Conflicting override sets   parent: OverrideSet {
+18 silly Conflicting override sets     parent: undefined,
+18 silly Conflicting override sets     children: Map(5) {
+18 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+18 silly Conflicting override sets       'react-router' => [OverrideSet],
+18 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+18 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+18 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+18 silly Conflicting override sets     }
+18 silly Conflicting override sets   },
+18 silly Conflicting override sets   children: Map(0) {},
+18 silly Conflicting override sets   name: '@shopify/hydrogen',
+18 silly Conflicting override sets   key: '@shopify/hydrogen',
+18 silly Conflicting override sets   keySpec: '*',
+18 silly Conflicting override sets   value: '2025.7.0'
+18 silly Conflicting override sets }
+19 silly Conflicting override sets js-tokens
+20 silly Conflicting override sets <ref *1> OverrideSet {
+20 silly Conflicting override sets   parent: OverrideSet {
+20 silly Conflicting override sets     parent: undefined,
+20 silly Conflicting override sets     children: Map(5) {
+20 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+20 silly Conflicting override sets       'react-router' => [OverrideSet],
+20 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+20 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+20 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+20 silly Conflicting override sets     }
+20 silly Conflicting override sets   },
+20 silly Conflicting override sets   children: Map(0) {},
+20 silly Conflicting override sets   name: '@shopify/hydrogen',
+20 silly Conflicting override sets   key: '@shopify/hydrogen',
+20 silly Conflicting override sets   keySpec: '*',
+20 silly Conflicting override sets   value: '2025.7.0'
+20 silly Conflicting override sets } <ref *1> OverrideSet {
+20 silly Conflicting override sets   parent: OverrideSet {
+20 silly Conflicting override sets     parent: undefined,
+20 silly Conflicting override sets     children: Map(5) {
+20 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+20 silly Conflicting override sets       'react-router' => [Circular *1],
+20 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+20 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+20 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+20 silly Conflicting override sets     }
+20 silly Conflicting override sets   },
+20 silly Conflicting override sets   children: Map(0) {},
+20 silly Conflicting override sets   name: 'react-router',
+20 silly Conflicting override sets   key: 'react-router',
+20 silly Conflicting override sets   keySpec: '*',
+20 silly Conflicting override sets   value: '7.9.2'
+20 silly Conflicting override sets }
+21 silly Conflicting override sets react
+22 silly Conflicting override sets <ref *1> OverrideSet {
+22 silly Conflicting override sets   parent: OverrideSet {
+22 silly Conflicting override sets     parent: undefined,
+22 silly Conflicting override sets     children: Map(5) {
+22 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+22 silly Conflicting override sets       'react-router' => [OverrideSet],
+22 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+22 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+22 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+22 silly Conflicting override sets     }
+22 silly Conflicting override sets   },
+22 silly Conflicting override sets   children: Map(0) {},
+22 silly Conflicting override sets   name: '@shopify/hydrogen',
+22 silly Conflicting override sets   key: '@shopify/hydrogen',
+22 silly Conflicting override sets   keySpec: '*',
+22 silly Conflicting override sets   value: '2025.7.0'
+22 silly Conflicting override sets } <ref *1> OverrideSet {
+22 silly Conflicting override sets   parent: OverrideSet {
+22 silly Conflicting override sets     parent: undefined,
+22 silly Conflicting override sets     children: Map(5) {
+22 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+22 silly Conflicting override sets       'react-router' => [Circular *1],
+22 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+22 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+22 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+22 silly Conflicting override sets     }
+22 silly Conflicting override sets   },
+22 silly Conflicting override sets   children: Map(0) {},
+22 silly Conflicting override sets   name: 'react-router',
+22 silly Conflicting override sets   key: 'react-router',
+22 silly Conflicting override sets   keySpec: '*',
+22 silly Conflicting override sets   value: '7.9.2'
+22 silly Conflicting override sets }
+23 silly Conflicting override sets react-dom
+24 silly Conflicting override sets <ref *1> OverrideSet {
+24 silly Conflicting override sets   parent: OverrideSet {
+24 silly Conflicting override sets     parent: undefined,
+24 silly Conflicting override sets     children: Map(5) {
+24 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+24 silly Conflicting override sets       'react-router' => [OverrideSet],
+24 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+24 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+24 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+24 silly Conflicting override sets     }
+24 silly Conflicting override sets   },
+24 silly Conflicting override sets   children: Map(0) {},
+24 silly Conflicting override sets   name: '@shopify/hydrogen',
+24 silly Conflicting override sets   key: '@shopify/hydrogen',
+24 silly Conflicting override sets   keySpec: '*',
+24 silly Conflicting override sets   value: '2025.7.0'
+24 silly Conflicting override sets } <ref *1> OverrideSet {
+24 silly Conflicting override sets   parent: OverrideSet {
+24 silly Conflicting override sets     parent: undefined,
+24 silly Conflicting override sets     children: Map(5) {
+24 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+24 silly Conflicting override sets       'react-router' => [OverrideSet],
+24 silly Conflicting override sets       'react-router-dom' => [Circular *1],
+24 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+24 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+24 silly Conflicting override sets     }
+24 silly Conflicting override sets   },
+24 silly Conflicting override sets   children: Map(0) {},
+24 silly Conflicting override sets   name: 'react-router-dom',
+24 silly Conflicting override sets   key: 'react-router-dom',
+24 silly Conflicting override sets   keySpec: '*',
+24 silly Conflicting override sets   value: '7.9.2'
+24 silly Conflicting override sets }
+25 silly Conflicting override sets react
+26 silly Conflicting override sets <ref *1> OverrideSet {
+26 silly Conflicting override sets   parent: OverrideSet {
+26 silly Conflicting override sets     parent: undefined,
+26 silly Conflicting override sets     children: Map(5) {
+26 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+26 silly Conflicting override sets       'react-router' => [OverrideSet],
+26 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+26 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+26 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+26 silly Conflicting override sets     }
+26 silly Conflicting override sets   },
+26 silly Conflicting override sets   children: Map(0) {},
+26 silly Conflicting override sets   name: '@shopify/hydrogen',
+26 silly Conflicting override sets   key: '@shopify/hydrogen',
+26 silly Conflicting override sets   keySpec: '*',
+26 silly Conflicting override sets   value: '2025.7.0'
+26 silly Conflicting override sets } <ref *1> OverrideSet {
+26 silly Conflicting override sets   parent: OverrideSet {
+26 silly Conflicting override sets     parent: undefined,
+26 silly Conflicting override sets     children: Map(5) {
+26 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+26 silly Conflicting override sets       'react-router' => [OverrideSet],
+26 silly Conflicting override sets       'react-router-dom' => [Circular *1],
+26 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+26 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+26 silly Conflicting override sets     }
+26 silly Conflicting override sets   },
+26 silly Conflicting override sets   children: Map(0) {},
+26 silly Conflicting override sets   name: 'react-router-dom',
+26 silly Conflicting override sets   key: 'react-router-dom',
+26 silly Conflicting override sets   keySpec: '*',
+26 silly Conflicting override sets   value: '7.9.2'
+26 silly Conflicting override sets }
+27 silly Conflicting override sets react-dom
+28 silly Conflicting override sets <ref *1> OverrideSet {
+28 silly Conflicting override sets   parent: OverrideSet {
+28 silly Conflicting override sets     parent: undefined,
+28 silly Conflicting override sets     children: Map(5) {
+28 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+28 silly Conflicting override sets       'react-router' => [OverrideSet],
+28 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+28 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+28 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+28 silly Conflicting override sets     }
+28 silly Conflicting override sets   },
+28 silly Conflicting override sets   children: Map(0) {},
+28 silly Conflicting override sets   name: '@react-router/dev',
+28 silly Conflicting override sets   key: '@react-router/dev',
+28 silly Conflicting override sets   keySpec: '*',
+28 silly Conflicting override sets   value: '7.9.2'
+28 silly Conflicting override sets } <ref *1> OverrideSet {
+28 silly Conflicting override sets   parent: OverrideSet {
+28 silly Conflicting override sets     parent: undefined,
+28 silly Conflicting override sets     children: Map(5) {
+28 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+28 silly Conflicting override sets       'react-router' => [OverrideSet],
+28 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+28 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+28 silly Conflicting override sets       '@react-router/fs-routes' => [Circular *1]
+28 silly Conflicting override sets     }
+28 silly Conflicting override sets   },
+28 silly Conflicting override sets   children: Map(0) {},
+28 silly Conflicting override sets   name: '@react-router/fs-routes',
+28 silly Conflicting override sets   key: '@react-router/fs-routes',
+28 silly Conflicting override sets   keySpec: '*',
+28 silly Conflicting override sets   value: '7.9.2'
+28 silly Conflicting override sets }
+29 silly Conflicting override sets typescript
+30 silly Conflicting override sets <ref *1> OverrideSet {
+30 silly Conflicting override sets   parent: OverrideSet {
+30 silly Conflicting override sets     parent: undefined,
+30 silly Conflicting override sets     children: Map(5) {
+30 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+30 silly Conflicting override sets       'react-router' => [OverrideSet],
+30 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+30 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+30 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+30 silly Conflicting override sets     }
+30 silly Conflicting override sets   },
+30 silly Conflicting override sets   children: Map(0) {},
+30 silly Conflicting override sets   name: '@react-router/dev',
+30 silly Conflicting override sets   key: '@react-router/dev',
+30 silly Conflicting override sets   keySpec: '*',
+30 silly Conflicting override sets   value: '7.9.2'
+30 silly Conflicting override sets } <ref *1> OverrideSet {
+30 silly Conflicting override sets   parent: OverrideSet {
+30 silly Conflicting override sets     parent: undefined,
+30 silly Conflicting override sets     children: Map(5) {
+30 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+30 silly Conflicting override sets       'react-router' => [OverrideSet],
+30 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+30 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+30 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+30 silly Conflicting override sets     }
+30 silly Conflicting override sets   },
+30 silly Conflicting override sets   children: Map(0) {},
+30 silly Conflicting override sets   name: '@shopify/hydrogen',
+30 silly Conflicting override sets   key: '@shopify/hydrogen',
+30 silly Conflicting override sets   keySpec: '*',
+30 silly Conflicting override sets   value: '2025.7.0'
+30 silly Conflicting override sets }
+31 silly Conflicting override sets vite
+32 silly Conflicting override sets <ref *1> OverrideSet {
+32 silly Conflicting override sets   parent: OverrideSet {
+32 silly Conflicting override sets     parent: undefined,
+32 silly Conflicting override sets     children: Map(5) {
+32 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+32 silly Conflicting override sets       'react-router' => [OverrideSet],
+32 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+32 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+32 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+32 silly Conflicting override sets     }
+32 silly Conflicting override sets   },
+32 silly Conflicting override sets   children: Map(0) {},
+32 silly Conflicting override sets   name: '@react-router/dev',
+32 silly Conflicting override sets   key: '@react-router/dev',
+32 silly Conflicting override sets   keySpec: '*',
+32 silly Conflicting override sets   value: '7.9.2'
+32 silly Conflicting override sets } <ref *1> OverrideSet {
+32 silly Conflicting override sets   parent: OverrideSet {
+32 silly Conflicting override sets     parent: undefined,
+32 silly Conflicting override sets     children: Map(5) {
+32 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+32 silly Conflicting override sets       'react-router' => [OverrideSet],
+32 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+32 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+32 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+32 silly Conflicting override sets     }
+32 silly Conflicting override sets   },
+32 silly Conflicting override sets   children: Map(0) {},
+32 silly Conflicting override sets   name: '@shopify/hydrogen',
+32 silly Conflicting override sets   key: '@shopify/hydrogen',
+32 silly Conflicting override sets   keySpec: '*',
+32 silly Conflicting override sets   value: '2025.7.0'
+32 silly Conflicting override sets }
+33 silly Conflicting override sets vite
+34 silly Conflicting override sets <ref *1> OverrideSet {
+34 silly Conflicting override sets   parent: OverrideSet {
+34 silly Conflicting override sets     parent: undefined,
+34 silly Conflicting override sets     children: Map(5) {
+34 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+34 silly Conflicting override sets       'react-router' => [OverrideSet],
+34 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+34 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+34 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+34 silly Conflicting override sets     }
+34 silly Conflicting override sets   },
+34 silly Conflicting override sets   children: Map(0) {},
+34 silly Conflicting override sets   name: '@shopify/hydrogen',
+34 silly Conflicting override sets   key: '@shopify/hydrogen',
+34 silly Conflicting override sets   keySpec: '*',
+34 silly Conflicting override sets   value: '2025.7.0'
+34 silly Conflicting override sets } <ref *1> OverrideSet {
+34 silly Conflicting override sets   parent: OverrideSet {
+34 silly Conflicting override sets     parent: undefined,
+34 silly Conflicting override sets     children: Map(5) {
+34 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+34 silly Conflicting override sets       'react-router' => [OverrideSet],
+34 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+34 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+34 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+34 silly Conflicting override sets     }
+34 silly Conflicting override sets   },
+34 silly Conflicting override sets   children: Map(0) {},
+34 silly Conflicting override sets   name: '@react-router/dev',
+34 silly Conflicting override sets   key: '@react-router/dev',
+34 silly Conflicting override sets   keySpec: '*',
+34 silly Conflicting override sets   value: '7.9.2'
+34 silly Conflicting override sets }
+35 silly Conflicting override sets color-name
+36 silly Conflicting override sets <ref *1> OverrideSet {
+36 silly Conflicting override sets   parent: OverrideSet {
+36 silly Conflicting override sets     parent: undefined,
+36 silly Conflicting override sets     children: Map(5) {
+36 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+36 silly Conflicting override sets       'react-router' => [Circular *1],
+36 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+36 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+36 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+36 silly Conflicting override sets     }
+36 silly Conflicting override sets   },
+36 silly Conflicting override sets   children: Map(0) {},
+36 silly Conflicting override sets   name: 'react-router',
+36 silly Conflicting override sets   key: 'react-router',
+36 silly Conflicting override sets   keySpec: '*',
+36 silly Conflicting override sets   value: '7.9.2'
+36 silly Conflicting override sets } <ref *1> OverrideSet {
+36 silly Conflicting override sets   parent: OverrideSet {
+36 silly Conflicting override sets     parent: undefined,
+36 silly Conflicting override sets     children: Map(5) {
+36 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+36 silly Conflicting override sets       'react-router' => [OverrideSet],
+36 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+36 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+36 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+36 silly Conflicting override sets     }
+36 silly Conflicting override sets   },
+36 silly Conflicting override sets   children: Map(0) {},
+36 silly Conflicting override sets   name: '@shopify/hydrogen',
+36 silly Conflicting override sets   key: '@shopify/hydrogen',
+36 silly Conflicting override sets   keySpec: '*',
+36 silly Conflicting override sets   value: '2025.7.0'
+36 silly Conflicting override sets }
+37 silly Conflicting override sets <ref *1> OverrideSet {
+37 silly Conflicting override sets   parent: OverrideSet {
+37 silly Conflicting override sets     parent: undefined,
+37 silly Conflicting override sets     children: Map(5) {
+37 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+37 silly Conflicting override sets       'react-router' => [Circular *1],
+37 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+37 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+37 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+37 silly Conflicting override sets     }
+37 silly Conflicting override sets   },
+37 silly Conflicting override sets   children: Map(0) {},
+37 silly Conflicting override sets   name: 'react-router',
+37 silly Conflicting override sets   key: 'react-router',
+37 silly Conflicting override sets   keySpec: '*',
+37 silly Conflicting override sets   value: '7.9.2'
+37 silly Conflicting override sets } <ref *1> OverrideSet {
+37 silly Conflicting override sets   parent: OverrideSet {
+37 silly Conflicting override sets     parent: undefined,
+37 silly Conflicting override sets     children: Map(5) {
+37 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+37 silly Conflicting override sets       'react-router' => [OverrideSet],
+37 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+37 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+37 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+37 silly Conflicting override sets     }
+37 silly Conflicting override sets   },
+37 silly Conflicting override sets   children: Map(0) {},
+37 silly Conflicting override sets   name: '@shopify/hydrogen',
+37 silly Conflicting override sets   key: '@shopify/hydrogen',
+37 silly Conflicting override sets   keySpec: '*',
+37 silly Conflicting override sets   value: '2025.7.0'
+37 silly Conflicting override sets }
+38 silly Conflicting override sets <ref *1> OverrideSet {
+38 silly Conflicting override sets   parent: OverrideSet {
+38 silly Conflicting override sets     parent: undefined,
+38 silly Conflicting override sets     children: Map(5) {
+38 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+38 silly Conflicting override sets       'react-router' => [OverrideSet],
+38 silly Conflicting override sets       'react-router-dom' => [Circular *1],
+38 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+38 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+38 silly Conflicting override sets     }
+38 silly Conflicting override sets   },
+38 silly Conflicting override sets   children: Map(0) {},
+38 silly Conflicting override sets   name: 'react-router-dom',
+38 silly Conflicting override sets   key: 'react-router-dom',
+38 silly Conflicting override sets   keySpec: '*',
+38 silly Conflicting override sets   value: '7.9.2'
+38 silly Conflicting override sets } <ref *1> OverrideSet {
+38 silly Conflicting override sets   parent: OverrideSet {
+38 silly Conflicting override sets     parent: undefined,
+38 silly Conflicting override sets     children: Map(5) {
+38 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+38 silly Conflicting override sets       'react-router' => [OverrideSet],
+38 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+38 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+38 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+38 silly Conflicting override sets     }
+38 silly Conflicting override sets   },
+38 silly Conflicting override sets   children: Map(0) {},
+38 silly Conflicting override sets   name: '@shopify/hydrogen',
+38 silly Conflicting override sets   key: '@shopify/hydrogen',
+38 silly Conflicting override sets   keySpec: '*',
+38 silly Conflicting override sets   value: '2025.7.0'
+38 silly Conflicting override sets }
+39 silly Conflicting override sets <ref *1> OverrideSet {
+39 silly Conflicting override sets   parent: OverrideSet {
+39 silly Conflicting override sets     parent: undefined,
+39 silly Conflicting override sets     children: Map(5) {
+39 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+39 silly Conflicting override sets       'react-router' => [OverrideSet],
+39 silly Conflicting override sets       'react-router-dom' => [Circular *1],
+39 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+39 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+39 silly Conflicting override sets     }
+39 silly Conflicting override sets   },
+39 silly Conflicting override sets   children: Map(0) {},
+39 silly Conflicting override sets   name: 'react-router-dom',
+39 silly Conflicting override sets   key: 'react-router-dom',
+39 silly Conflicting override sets   keySpec: '*',
+39 silly Conflicting override sets   value: '7.9.2'
+39 silly Conflicting override sets } <ref *1> OverrideSet {
+39 silly Conflicting override sets   parent: OverrideSet {
+39 silly Conflicting override sets     parent: undefined,
+39 silly Conflicting override sets     children: Map(5) {
+39 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+39 silly Conflicting override sets       'react-router' => [OverrideSet],
+39 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+39 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+39 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+39 silly Conflicting override sets     }
+39 silly Conflicting override sets   },
+39 silly Conflicting override sets   children: Map(0) {},
+39 silly Conflicting override sets   name: '@shopify/hydrogen',
+39 silly Conflicting override sets   key: '@shopify/hydrogen',
+39 silly Conflicting override sets   keySpec: '*',
+39 silly Conflicting override sets   value: '2025.7.0'
+39 silly Conflicting override sets }
+40 silly Conflicting override sets <ref *1> OverrideSet {
+40 silly Conflicting override sets   parent: OverrideSet {
+40 silly Conflicting override sets     parent: undefined,
+40 silly Conflicting override sets     children: Map(5) {
+40 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+40 silly Conflicting override sets       'react-router' => [OverrideSet],
+40 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+40 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+40 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+40 silly Conflicting override sets     }
+40 silly Conflicting override sets   },
+40 silly Conflicting override sets   children: Map(0) {},
+40 silly Conflicting override sets   name: '@shopify/hydrogen',
+40 silly Conflicting override sets   key: '@shopify/hydrogen',
+40 silly Conflicting override sets   keySpec: '*',
+40 silly Conflicting override sets   value: '2025.7.0'
+40 silly Conflicting override sets } <ref *1> OverrideSet {
+40 silly Conflicting override sets   parent: OverrideSet {
+40 silly Conflicting override sets     parent: undefined,
+40 silly Conflicting override sets     children: Map(5) {
+40 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+40 silly Conflicting override sets       'react-router' => [OverrideSet],
+40 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+40 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+40 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+40 silly Conflicting override sets     }
+40 silly Conflicting override sets   },
+40 silly Conflicting override sets   children: Map(0) {},
+40 silly Conflicting override sets   name: '@react-router/dev',
+40 silly Conflicting override sets   key: '@react-router/dev',
+40 silly Conflicting override sets   keySpec: '*',
+40 silly Conflicting override sets   value: '7.9.2'
+40 silly Conflicting override sets }
+41 silly Conflicting override sets <ref *1> OverrideSet {
+41 silly Conflicting override sets   parent: OverrideSet {
+41 silly Conflicting override sets     parent: undefined,
+41 silly Conflicting override sets     children: Map(5) {
+41 silly Conflicting override sets       '@shopify/hydrogen' => [Circular *1],
+41 silly Conflicting override sets       'react-router' => [OverrideSet],
+41 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+41 silly Conflicting override sets       '@react-router/dev' => [OverrideSet],
+41 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+41 silly Conflicting override sets     }
+41 silly Conflicting override sets   },
+41 silly Conflicting override sets   children: Map(0) {},
+41 silly Conflicting override sets   name: '@shopify/hydrogen',
+41 silly Conflicting override sets   key: '@shopify/hydrogen',
+41 silly Conflicting override sets   keySpec: '*',
+41 silly Conflicting override sets   value: '2025.7.0'
+41 silly Conflicting override sets } <ref *1> OverrideSet {
+41 silly Conflicting override sets   parent: OverrideSet {
+41 silly Conflicting override sets     parent: undefined,
+41 silly Conflicting override sets     children: Map(5) {
+41 silly Conflicting override sets       '@shopify/hydrogen' => [OverrideSet],
+41 silly Conflicting override sets       'react-router' => [OverrideSet],
+41 silly Conflicting override sets       'react-router-dom' => [OverrideSet],
+41 silly Conflicting override sets       '@react-router/dev' => [Circular *1],
+41 silly Conflicting override sets       '@react-router/fs-routes' => [OverrideSet]
+41 silly Conflicting override sets     }
+41 silly Conflicting override sets   },
+41 silly Conflicting override sets   children: Map(0) {},
+41 silly Conflicting override sets   name: '@react-router/dev',
+41 silly Conflicting override sets   key: '@react-router/dev',
+41 silly Conflicting override sets   keySpec: '*',
+41 silly Conflicting override sets   value: '7.9.2'
+41 silly Conflicting override sets }
+42 silly idealTree buildDeps
+43 http cache https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.1.18.tgz 0ms (cache hit)
+44 silly tarball no local data for https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.1.18.tgz. Extracting by manifest.
+45 verbose stack Error: request to https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.1.18.tgz failed: cache mode is 'only-if-cached' but no cached response is available.
+45 verbose stack     at cacheFetch (C:\Users\dario\AppData\Roaming\npm\node_modules\npm\node_modules\make-fetch-happen\lib\cache\index.js:12:13)
+45 verbose stack     at async fetch (C:\Users\dario\AppData\Roaming\npm\node_modules\npm\node_modules\make-fetch-happen\lib\fetch.js:98:7)
+46 error code ENOTCACHED
+47 error request to https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.1.18.tgz failed: cache mode is 'only-if-cached' but no cached response is available.
+48 silly unfinished npm timer reify 1773604512828
+49 silly unfinished npm timer reify:loadTrees 1773604512828
+50 silly unfinished npm timer idealTree:buildDeps 1773604513322
+51 silly unfinished npm timer idealTree:node_modules/@tailwindcss/oxide-wasm32-wasi 1773604513323
+52 verbose cwd C:\Users\dario\Desktop\WebDev\SALTANDSPIRIT\Salt-Spirit
+53 verbose os Windows_NT 10.0.26200
+54 verbose node v20.19.5
+55 verbose npm  v11.8.0
+56 verbose exit 1
+57 verbose code 1
+58 error A complete log of this run can be found in: C:\Users\dario\Desktop\WebDev\SALTANDSPIRIT\Salt-Spirit\.npm-cache\_logs\2026-03-15T19_55_12_213Z-debug-0.log

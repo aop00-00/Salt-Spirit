@@ -1,15 +1,17 @@
+import { IMAGE_ASSETS } from '~/lib/imagePaths';
+
 export const PRODUCT_CONTENT = {
     default: {
         overview: [
             {
                 title: "Calidad Premium",
                 description: "Productos seleccionados cuidadosamente para garantizar la mejor experiencia.",
-                image: "/_MG_0199_VSCO.JPG"
+                image: IMAGE_ASSETS.editorial.homeGallery.ritualPremium.avif
             },
             {
                 title: "Ciencia y Sabor",
                 description: "Fórmulas desarrolladas para hidratarte mejor, con sabores que te encantarán.",
-                image: "/_MG_0215_VSCO.JPG"
+                image: IMAGE_ASSETS.editorial.homeGallery.scienceAndFlavor.avif
             }
         ],
         comparison: [
@@ -31,22 +33,22 @@ export const PRODUCT_CONTENT = {
             {
                 title: "Hidratación Profunda",
                 description: "Formulado para reponer los electrolitos perdidos durante el día y actividad física intensa.",
-                image: "/_MG_0199_VSCO.JPG"
+                image: IMAGE_ASSETS.editorial.homeGallery.ritualPremium.avif
             },
             {
                 title: "Sabor Blue Raspberry",
                 description: "Un toque refrescante y dulce de frambuesa azul natural, sin dejar resabios químicos.",
-                image: "/pure-blue-2.jpg"
+                image: IMAGE_ASSETS.products.pureBlue.card.avif
             },
             {
                 title: "Sin Azúcar Añadida",
                 description: "Disfruta sin culpa. 0 azúcares, 0 calorías vacías, 100% hidratación.",
-                image: "/pure-blue-3.png"
+                image: IMAGE_ASSETS.products.pureBlue.details.avif
             },
             {
                 title: "Minerales Esenciales",
                 description: "Cargado con Sodio, Potasio y Magnesio para evitar calambres y fatiga.",
-                image: "/IMG_9694_VSCO.JPG"
+                image: IMAGE_ASSETS.editorial.about.spiritStory.avif
             }
         ],
         comparison: [
@@ -72,22 +74,22 @@ export const PRODUCT_CONTENT = {
             {
                 title: "Energía Natural",
                 description: "Un boost de energía limpia proveniente del té verde y vitaminas B para tu día a día.",
-                image: "/_MG_9093_VSCO.JPG"
+                image: IMAGE_ASSETS.editorial.homeGallery.vitalRedEditorial.avif
             },
             {
                 title: "Sabor Fruit Punch",
                 description: "La mezcla cláscia de frutas tropicales con un toque cítrico revitalizante.",
-                image: "/vital-red-2.jpg"
+                image: IMAGE_ASSETS.products.vitalRed.card.avif
             },
             {
                 title: "Enfoque Mental",
                 description: "Mejora tu concentración y alerta sin los nervios o el 'crash' del café.",
-                image: "/_MG_9982_VSCO.JPG"
+                image: IMAGE_ASSETS.editorial.about.saltStory.avif
             },
             {
                 title: "Vitaminas Antioxidantes",
                 description: "Reforzado con Vitamina C y Zinc para apoyar tu sistema inmune.",
-                image: "/vital-red-3.jpg"
+                image: IMAGE_ASSETS.products.vitalRed.details.avif
             }
         ],
         comparison: [
@@ -112,22 +114,22 @@ export const PRODUCT_CONTENT = {
             {
                 title: "Relajación Nocturna",
                 description: "Diseñado para preparar tu cuerpo y mente para un sueño reparador.",
-                image: "/hydra-rest-1.jpg"
+                image: IMAGE_ASSETS.products.hydraRest.card.avif
             },
             {
                 title: "Magnesio Bisglicinato",
                 description: "La forma de magnesio más absorbible y relajante para calmar el sistema nervioso.",
-                image: "/hydra-rest-2.png"
+                image: IMAGE_ASSETS.products.hydraRest.details1.avif
             },
             {
                 title: "Sabor Lavanda-Miel",
                 description: "Un sabor suave y reconfortante para tu rutina de noche.",
-                image: "/hydra-rest-3.png"
+                image: IMAGE_ASSETS.products.hydraRest.details2.avif
             },
             {
                 title: "Sin Melatonina",
                 description: "Apoya el sueño natural sin hormonas añadidas, para que despiertes fresco.",
-                image: "/hydra-rest-4.jpg"
+                image: IMAGE_ASSETS.products.hydraRest.details3.avif
             }
         ],
         comparison: [
@@ -152,22 +154,22 @@ export const PRODUCT_CONTENT = {
             {
                 title: "Lo Mejor de Todo",
                 description: "Prueba todos nuestros sabores y beneficios en un solo paquete conveniente.",
-                image: "/mix-1.png"
+                image: IMAGE_ASSETS.products.mix.details1.avif
             },
             {
                 title: "Variedad Diaria",
                 description: "Energía para la mañana, Hidratación para el día, Descanso para la noche.",
-                image: "/mix-2.png"
+                image: IMAGE_ASSETS.products.mix.details2.avif
             },
             {
                 title: "Ideal para Viajar",
                 description: "Sobres individuales fáciles de llevar contigo a cualquier aventura.",
-                image: "/mix-3.png"
+                image: IMAGE_ASSETS.products.mix.details3.avif
             },
             {
                 title: "Descubre tu Favorito",
                 description: "¿No sabes cuál elegir? Empieza por aquí y enamórate de todos.",
-                image: "/mix-4.png"
+                image: IMAGE_ASSETS.products.mix.details4.avif
             }
         ],
         comparison: [

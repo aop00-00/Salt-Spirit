@@ -15,14 +15,10 @@ export function CartMain({ layout, cart: originalCart }) {
   const cart = useOptimisticCart(originalCart);
 
   const linesCount = Boolean(cart?.lines?.nodes?.length || 0);
-  const withDiscount =
-    cart &&
-    Boolean(cart?.discountCodes?.filter((code) => code.applicable)?.length);
-  const className = `cart-main ${withDiscount ? 'with-discount' : ''}`;
   const cartHasItems = cart?.totalQuantity ? cart.totalQuantity > 0 : false;
 
   return (
-    <div className={`${className} h-full flex flex-col bg-white w-full max-w-[100vw] overflow-x-hidden`}>
+    <div className="flex flex-col h-full bg-[#F9F9F9] w-full max-w-[100vw] overflow-hidden">
       <CartEmpty hidden={linesCount} layout={layout} />
       <div className="cart-details flex flex-col h-full w-full overflow-hidden">
         <div aria-labelledby="cart-lines" className="flex-1 overflow-y-auto custom-scrollbar px-6 py-6 w-full">

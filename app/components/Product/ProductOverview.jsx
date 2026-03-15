@@ -1,26 +1,27 @@
 import { Image } from '@shopify/hydrogen';
+import { IMAGE_ASSETS } from '~/lib/imagePaths';
 
 // Placeholder data - In a real implementation this might mock metafields
 const FEATURES = [
     {
         title: "Pure Hydration",
         description: "Experience the cleanest hydration with our advanced triple-filtration system that removes 99% of impurities.",
-        image: "https://cdn.shopify.com/s/files/1/0665/3794/7317/files/048F4427-A5E5-4022-B3C6-19A6DC9820FD.JPG?v=1733261225"
+        image: IMAGE_ASSETS.editorial.homeGallery.ssStandard.avif
     },
     {
         title: "Smart Monitoring",
         description: "Keep track of your intake with our integrated app. Set goals, receive reminders, and stay accountable.",
-        image: "https://cdn.shopify.com/s/files/1/0665/3794/7317/files/IMG_9692_VSCO.jpg?v=1733261226"
+        image: IMAGE_ASSETS.editorial.about.saltStory.avif
     },
     {
         title: "Designed for Life",
         description: "A durable, leak-proof design that fits perfectly in your car cup holder or gym bag. Built to go wherever you do.",
-        image: "https://cdn.shopify.com/s/files/1/0665/3794/7317/files/IMG_9694_VSCO.jpg?v=1733261227"
+        image: IMAGE_ASSETS.editorial.about.spiritStory.avif
     },
     {
         title: "Sustainable Choice",
         description: "Ditch single-use plastics. Our long-lasting materials ensure you're making a positive impact on the planet.",
-        image: "https://cdn.shopify.com/s/files/1/0665/3794/7317/files/_MG_9093_VSCO.JPG?v=1733261225"
+        image: IMAGE_ASSETS.editorial.homeGallery.vitalRedEditorial.avif
     }
 ];
 

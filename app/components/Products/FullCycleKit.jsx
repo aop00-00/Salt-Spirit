@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { AddToCartButton } from '~/components/Cart/AddToCartButton';
 import { useAside } from '~/components/Layout/Aside';
+import { IMAGE_ASSETS } from '~/lib/imagePaths';
 
 export default function FullCycleKit({ products = [] }) {
     const { open } = useAside();
@@ -26,7 +27,7 @@ export default function FullCycleKit({ products = [] }) {
                     <div className="order-2 md:order-1">
                         <div className="relative aspect-square rounded-lg overflow-hidden bg-[#FAFAFA]">
                             <img
-                                src="/Mix.jpg"
+                                src={IMAGE_ASSETS.products.mix.card.avif}
                                 alt="The 24-Hour Ritual Kit"
                                 className="w-full h-full object-cover"
                             />

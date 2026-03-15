@@ -1,24 +1,44 @@
 import { Await, useLoaderData, Link } from 'react-router';
 import { Suspense, lazy } from 'react';
 import { Image } from '@shopify/hydrogen';
-import { ProductItem } from '~/components/Product/ProductItem';
-import { ProductTrailCard } from '~/components/Product/ProductTrailCard';
-import { ClientOnly } from '~/components/Common/ClientOnly';
-import { CardsParallax } from '~/components/Common/CardsParallax';
-import BlurTextAnimation from '~/components/BlurTextAnimation';
-import Feature108 from '~/components/Feature108';
-import BentoGridSection from '~/components/BentoGridSection';
-import Testimonials from '~/components/Testimonials';
+import { ClientOnly } from '~/components/Shared/ClientOnly';
+import { CardsParallax } from '~/components/Shared/CardsParallax';
+import BlurTextAnimation from '~/components/Effects/BlurTextAnimation';
+import Feature108 from '~/components/Home/Feature108';
+import BentoGridSection from '~/components/Home/BentoGridSection';
+import Testimonials from '~/components/Home/Testimonials';
 import ComboSection from '~/components/Combo/ComboSection';
-import Slideshow from '~/components/Slideshow';
+import Slideshow from '~/components/Home/Slideshow';
+import { IMAGE_ASSETS } from '~/lib/imagePaths';
+import {
+  SHARING_IMAGES,
+  buildWebPageJsonLd,
+  createPageSeo,
+  mergeRouteMeta,
+} from '~/lib/seo';
 
-const InfiniteGallery = lazy(() => import('~/components/Common/InfiniteGallery'));
+const InfiniteGallery = lazy(() => import('~/components/Shared/InfiniteGallery'));
 
 /**
  * @type {Route.MetaFunction}
  */
-export const meta = () => {
-  return [{ title: 'Salt & Spirit | Home' }];
+export const meta = ({matches}) => {
+  const seo = createPageSeo({
+    title: 'Hydrate Your Spirit',
+    description:
+      'Electrolitos premium para hidratacion, energia y descanso. Salt & Spirit redefine el ritual de rendimiento diario.',
+    path: '/',
+    image: SHARING_IMAGES.home,
+    jsonLd: buildWebPageJsonLd({
+      title: 'Hydrate Your Spirit',
+      description:
+        'Electrolitos premium para hidratacion, energia y descanso. Salt & Spirit redefine el ritual de rendimiento diario.',
+      path: '/',
+      image: SHARING_IMAGES.home,
+    }),
+  });
+
+  return mergeRouteMeta({matches, seo});
 };
 
 /**
@@ -91,13 +111,13 @@ export default function Homepage() {
   // just to verify the component works, then we can refine the data source.
 
   const heroImages = [
-    '/_MG_0199_VSCO.JPG',
-    '/_MG_0215_VSCO.JPG',
-    '/_MG_9093_VSCO.JPG',
-    '/048F4427-A5E5-4022-B3C6-19A6DC9820FD.JPG',
-    '/IMG_9692_VSCO.jpg',
-    '/IMG_9693_VSCO(1).JPG',
-    '/IMG_9694_VSCO.JPG',
+    IMAGE_ASSETS.editorial.homeGallery.ritualPremium.avif,
+    IMAGE_ASSETS.editorial.homeGallery.scienceAndFlavor.avif,
+    IMAGE_ASSETS.editorial.homeGallery.vitalRedEditorial.avif,
+    IMAGE_ASSETS.editorial.homeGallery.ssStandard.avif,
+    IMAGE_ASSETS.editorial.about.saltStory.avif,
+    IMAGE_ASSETS.editorial.about.hydraRestStory.avif,
+    IMAGE_ASSETS.editorial.about.spiritStory.avif,
   ];
 
   return (
@@ -120,7 +140,7 @@ export default function Homepage() {
           </ClientOnly>
 
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-            <img src="/logo.png.png" alt="Salt & Spirit" className="w-[80vw] max-w-[600px] h-auto object-contain mix-blend-difference opacity-90" />
+            <img src={IMAGE_ASSETS.branding.logo.avif} alt="Salt & Spirit" className="w-[80vw] max-w-[600px] h-auto object-contain mix-blend-difference opacity-90" />
           </div>
         </div>
       </div>
@@ -275,7 +295,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
       }
     }
   }
-  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
+  query HomeRecommendedProducts($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
     products(first: 4, sortKey: UPDATED_AT, reverse: true) {
       nodes {
@@ -287,5 +307,5 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
 
 /** @typedef {import('./+types/_index').Route} Route */
 /** @typedef {import('storefrontapi.generated').FeaturedCollectionFragment} FeaturedCollectionFragment */
-/** @typedef {import('storefrontapi.generated').RecommendedProductsQuery} RecommendedProductsQuery */
+/** @typedef {import('storefrontapi.generated').HomeRecommendedProductsQuery} RecommendedProductsQuery */
 /** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof loader>} LoaderReturnData */

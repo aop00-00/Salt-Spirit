@@ -19,9 +19,9 @@ export function CartLineItem({ layout, line }) {
   const { close } = useAside();
 
   return (
-    <li key={id} className="cart-line flex gap-4 py-4 relative group">
+    <li key={id} className="flex gap-4 p-4 relative group bg-white rounded-2xl shadow-sm border border-gray-100">
       {image && (
-        <div className="shrink-0 aspect-square w-[100px] h-[100px] rounded-[1.5rem] overflow-hidden bg-gray-100 p-2">
+        <div className="shrink-0 aspect-square w-[90px] h-[90px] rounded-xl overflow-hidden bg-[#F4F4F4] p-2 flex items-center justify-center">
           <Image
             alt={title}
             aspectRatio="1/1"

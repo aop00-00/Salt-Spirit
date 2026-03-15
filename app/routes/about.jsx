@@ -1,15 +1,18 @@
 import { Link } from 'react-router';
-import { Droplet, Brain, Zap, Moon, ChevronDown } from 'lucide-react';
-import { Suspense, lazy } from 'react';
-import { ClientOnly } from '~/components/Common/ClientOnly';
-import { MagicText } from '~/components/MagicText';
+import { Droplet, Brain, Zap, Moon, ChevronDown, ArrowRight } from 'lucide-react';
+import { Suspense, lazy, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ClientOnly } from '~/components/Shared/ClientOnly';
+import { MagicText } from '~/components/Effects/MagicText';
+import { IMAGE_ASSETS } from '~/lib/imagePaths';
+import { SHARING_IMAGES, buildWebPageJsonLd, createPageSeo, mergeRouteMeta } from '~/lib/seo';
 
-const LavaLamp = lazy(() => import('~/components/LavaLamp').then(m => ({ default: m.LavaLamp })));
+const LavaLamp = lazy(() => import('~/components/Effects/LavaLamp').then(m => ({ default: m.LavaLamp })));
 
 /**
  * @type {Route.MetaFunction}
  */
-export const meta = () => {
+const oldMeta = () => {
     return [
         { title: 'About Us | Salt & Spirit' },
         {
@@ -19,42 +22,144 @@ export const meta = () => {
     ];
 };
 
+void oldMeta;
+
+export const meta = ({ matches }) => {
+    const seo = createPageSeo({
+        title: 'About Us',
+        description: 'Somos el nuevo estandar. Hidratacion celular real, sin azucar y con una identidad visual pensada para alto rendimiento.',
+        path: '/about',
+        image: SHARING_IMAGES.about,
+        jsonLd: buildWebPageJsonLd({
+            title: 'About Us',
+            description: 'Somos el nuevo estandar. Hidratacion celular real, sin azucar y con una identidad visual pensada para alto rendimiento.',
+            path: '/about',
+            image: SHARING_IMAGES.about,
+        }),
+    });
+
+    return mergeRouteMeta({ matches, seo });
+};
+
 export default function AboutPage() {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ['start start', 'end start'],
+    });
+    const opacityOut = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
     return (
         <div className="about-page bg-white text-[#1D1E20]">
 
             {/* Hero Section with LavaLamp */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
                 {/* LavaLamp Background */}
-                <ClientOnly fallback={<div className="absolute inset-0 bg-black" />}>
-                    <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
-                        <LavaLamp />
-                    </Suspense>
-                </ClientOnly>
+                <div className="absolute inset-0 z-0">
+                    <ClientOnly fallback={<div className="absolute inset-0 bg-black" />}>
+                        <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
+                            <LavaLamp />
+                        </Suspense>
+                    </ClientOnly>
+                </div>
+                {/* Dark overlay to ensure text contrast */}
+                <div className="absolute inset-0 bg-black/30 z-[5]" />
 
-                <div className="relative z-10 container mx-auto px-6 py-20" style={{ mixBlendMode: 'difference' }}>
-                    <div className="max-w-5xl mx-auto text-center text-white">
-                        <h1 className="text-7xl md:text-9xl lg:text-[12rem] font-bold mb-6 leading-[0.9] tracking-tight text-white">
-                            Somos el<br />nuevo estándar
-                        </h1>
-                        <p className="text-xl md:text-2xl lg:text-4xl mb-12 text-white/90 max-w-3xl mx-auto font-light">
-                            No vendemos hidratación. Redefinimos lo que significa cuidar tu cuerpo y mente con cada sorbo.
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <motion.div style={{ opacity: opacityOut }} className="relative z-10 w-full px-6 md:px-16 flex flex-col justify-center mt-20 max-w-[1600px] mx-auto pointer-events-none">
+
+                    {/* Multi-layered Grid Layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end pointer-events-auto h-full min-h-[70vh]">
+                        {/* Left Side: Subtext and Button */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.6, duration: 1 }}
+                            className="md:col-span-5 flex flex-col items-start justify-end pb-12 order-2 md:order-1"
+                        >
+                            <p className="text-xl md:text-3xl text-white/50 leading-snug font-light tracking-wide mb-8">
+                                No vendemos hidratación.<br />
+                                <span className="text-white/90 font-medium">Redefinimos lo que significa</span><br />
+                                cuidar tu cuerpo y mente<br />con cada sorbo.
+                            </p>
+
                             <Link
                                 to="/products"
-                                className="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-xl flex items-center gap-2"
+                                className="group relative px-8 py-4 mt-4 bg-transparent border border-white/30 text-white rounded-full font-bold text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-4 overflow-hidden"
                             >
-                                Descubre más
+                                <span className="relative z-10">Descubre Más</span>
+                                <ArrowRight className="relative z-10 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
+                        </motion.div>
+
+                        {/* Right Side: Massive Typography */}
+                        <div className="md:col-span-7 flex flex-col items-start md:items-end text-left md:text-right order-1 md:order-2 w-full pt-20 md:pt-0">
+                            <div className="overflow-visible w-full">
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 100, rotate: -3 }}
+                                    animate={{ opacity: 1, y: 0, rotate: 0 }}
+                                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                                    className="font-black leading-[0.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
+                                    style={{ fontSize: 'clamp(2.5rem, 9vw, 7rem)' }}
+                                >
+                                    SOMOS EL
+                                </motion.h1>
+                            </div>
+
+                            <div className="overflow-visible w-full my-[-2%] z-10 md:mr-12">
+                                <motion.h1
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                                    className="font-black leading-[0.8] tracking-[-0.07em] inline-block mix-blend-difference"
+                                    style={{
+                                        WebkitTextStroke: '1px rgba(255,255,255,0.9)',
+                                        color: 'transparent',
+                                        fontSize: 'clamp(3rem, 11vw, 9rem)'
+                                    }}
+                                >
+                                    NUEVO
+                                </motion.h1>
+                            </div>
+
+                            <div className="overflow-visible w-full flex justify-start md:justify-end items-center gap-6">
+                                <motion.div
+                                    initial={{ scaleX: 0 }}
+                                    animate={{ scaleX: 1 }}
+                                    transition={{ delay: 0.6, duration: 1 }}
+                                    className="hidden md:block h-[1px] w-[10vw] max-w-[150px] bg-white/40 origin-right"
+                                />
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 100, rotate: -3 }}
+                                    animate={{ opacity: 1, y: 0, rotate: 0 }}
+                                    transition={{ delay: 0.4, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                                    className="font-black leading-[0.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
+                                    style={{ fontSize: 'clamp(2.5rem, 9vw, 7rem)' }}
+                                >
+                                    ESTÁNDAR
+                                </motion.h1>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Indicador de scroll */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                    <ChevronDown className="text-white/60" size={32} />
-                </div>
+                </motion.div>
+
+                {/* Vertical Scroll Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 1 }}
+                    className="absolute bottom-8 right-8 md:right-16 flex flex-col items-center gap-4 text-white/40"
+                >
+                    <span className="text-[10px] uppercase font-bold tracking-[0.4em] rotate-180" style={{ writingMode: 'vertical-rl' }}>
+                        Scroll
+                    </span>
+                    <motion.div
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                        <ChevronDown className="h-5 w-5" />
+                    </motion.div>
+                </motion.div>
             </section>
 
             {/* El Origen - The Spark */}
@@ -92,7 +197,7 @@ export default function AboutPage() {
                             <div
                                 className="absolute inset-0 bg-cover bg-center opacity-40"
                                 style={{
-                                    backgroundImage: 'url(/IMG_9692_VSCO.jpg)',
+                                    backgroundImage: `url(${IMAGE_ASSETS.editorial.about.saltStory.avif})`,
                                     filter: 'blur(3px)',
                                 }}
                             />
@@ -123,7 +228,7 @@ export default function AboutPage() {
                             <div
                                 className="absolute inset-0 bg-cover bg-center opacity-40"
                                 style={{
-                                    backgroundImage: 'url(/IMG_9694_VSCO.JPG)',
+                                    backgroundImage: `url(${IMAGE_ASSETS.editorial.about.spiritStory.avif})`,
                                     filter: 'blur(3px)',
                                 }}
                             />

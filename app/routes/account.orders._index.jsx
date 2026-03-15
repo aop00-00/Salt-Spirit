@@ -16,7 +16,7 @@ import {
   ORDER_FILTER_FIELDS,
 } from '~/lib/orderFilters';
 import { CUSTOMER_ORDERS_QUERY } from '~/graphql/customer-account/CustomerOrdersQuery';
-import { PaginatedResourceSection } from '~/components/Common/PaginatedResourceSection';
+import { PaginatedResourceSection } from '~/components/Shared/PaginatedResourceSection';
 
 /**
  * @type {Route.MetaFunction}

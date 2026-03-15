@@ -1,75 +1,77 @@
-import { useLoaderData } from 'react-router';
+import {useLoaderData} from 'react-router';
 import ProductsHero from '~/components/Products/ProductsHero';
 import ProductTriad from '~/components/Products/ProductTriad';
 import ScienceSection from '~/components/Products/ScienceSection';
 import FullCycleKit from '~/components/Products/FullCycleKit';
 import ProductsCTA from '~/components/Products/ProductsCTA';
+import {
+  SHARING_IMAGES,
+  buildWebPageJsonLd,
+  createPageSeo,
+  mergeRouteMeta,
+} from '~/lib/seo';
+
+const PRODUCTS_PAGE_DESCRIPTION =
+  'Tecnologia de hidratacion de precision para energia, enfoque y descanso. 0% azucar. 100% esencial.';
 
 /**
  * @type {Route.MetaFunction}
  */
-export const meta = () => {
-  return [
-    { title: 'Products | Salt & Spirit - The Performance Standard' },
-    {
-      name: 'description',
-      content: 'Tecnología de hidratación de precisión diseñada para tu ritmo. 0% Azúcar. 100% Esencial.',
-    },
-    {
-      rel: 'canonical',
-      href: '/products',
-    },
-  ];
+export const meta = ({data, matches}) => {
+  return mergeRouteMeta({matches, seo: data?.seo});
 };
 
 /**
  * @param {Route.LoaderArgs} args
  */
-export async function loader({ context }) {
-  const { storefront } = context;
+export async function loader({context}) {
+  const {storefront} = context;
 
-  // Fetch the 4 main products by handle
   const handles = ['vital-red', 'pure-blue', 'hydra-rest', 'mix'];
-
-  const productQueries = handles.map(handle =>
-    storefront.query(PRODUCT_QUERY, {
-      variables: { handle }
-    }).catch(() => null)
+  const productQueries = handles.map((handle) =>
+    storefront
+      .query(PRODUCT_QUERY, {
+        variables: {handle},
+      })
+      .catch(() => null),
   );
 
   const results = await Promise.all(productQueries);
-  const products = results
-    .map(result => result?.product)
-    .filter(Boolean);
+  const products = results.map((result) => result?.product).filter(Boolean);
 
-  return { products };
+  return {
+    products,
+    seo: createPageSeo({
+      title: 'Products',
+      description: PRODUCTS_PAGE_DESCRIPTION,
+      path: '/products',
+      image: SHARING_IMAGES.products,
+      jsonLd: buildWebPageJsonLd({
+        title: 'Products',
+        description: PRODUCTS_PAGE_DESCRIPTION,
+        path: '/products',
+        image: SHARING_IMAGES.products,
+      }),
+    }),
+  };
 }
 
 export default function ProductsIndex() {
-  const { products } = useLoaderData();
+  const {products} = useLoaderData();
 
   return (
     <div className="products-page">
-      {/* 1. Hero Section */}
       <ProductsHero />
-
-      {/* 2. Product Triad - The 3 Main Products */}
       <ProductTriad products={products} />
-
-      {/* 3. Science Section - Why It Works */}
       <ScienceSection />
-
-      {/* 4. Full Cycle Kit - Bundle Promotion */}
       <FullCycleKit products={products} />
-
-      {/* 5. Closing CTA */}
       <ProductsCTA products={products} />
     </div>
   );
 }
 
 const PRODUCT_QUERY = `#graphql
-  query Product($handle: String!) {
+  query ProductsIndexProductByHandle($handle: String!) {
     product(handle: $handle) {
       id
       title

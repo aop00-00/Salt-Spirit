@@ -1,5 +1,6 @@
 import { AddToCartButton } from '~/components/Cart/AddToCartButton';
 import { useAside } from '~/components/Layout/Aside';
+import { IMAGE_ASSETS } from '~/lib/imagePaths';
 
 export default function ProductsCTA({ products = [] }) {
     const { open } = useAside();
@@ -22,7 +23,7 @@ export default function ProductsCTA({ products = [] }) {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0">
                 <img
-                    src="/_MG_0329_VSCO.JPG"
+                    src={IMAGE_ASSETS.editorial.homeGallery.ritualPremium.avif}
                     alt="Elevate Your Standards"
                     className="w-full h-full object-cover"
                 />
@@ -40,16 +41,18 @@ export default function ProductsCTA({ products = [] }) {
                     Únete a quienes exigen más de su cuerpo y de su estilo de vida.
                 </p>
 
-                <AddToCartButton
-                    lines={cartLines}
-                    onClick={() => {
-                        open('cart');
-                    }}
-                    disabled={cartLines.length === 0}
-                    className="inline-block mx-auto px-10 py-5 bg-white text-black font-bold text-lg tracking-wide rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl"
-                >
-                    START YOUR TRANSFORMATION
-                </AddToCartButton>
+                <div className="flex justify-center pt-10">
+                    <AddToCartButton
+                        lines={cartLines}
+                        onClick={() => {
+                            open('cart');
+                        }}
+                        disabled={cartLines.length === 0}
+                        className="inline-block px-10 py-5 bg-white text-black font-bold text-lg tracking-wide rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl"
+                    >
+                        START YOUR TRANSFORMATION
+                    </AddToCartButton>
+                </div>
             </div>
         </section>
     );

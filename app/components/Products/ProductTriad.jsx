@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AddToCartButton } from '~/components/Cart/AddToCartButton';
 import { useAside } from '~/components/Layout/Aside';
+import { IMAGE_ASSETS } from '~/lib/imagePaths';
 
 const products = [
     {
@@ -12,7 +13,7 @@ const products = [
         subtitle: "Frutos Rojos",
         price: 450,
         description: "Energía limpia y sostenida. Sin picos, sin caídas. Fuel for the ambitious.",
-        image: "/vital-red-2.jpg",
+        image: IMAGE_ASSETS.products.vitalRed.card.avif,
         topBadge: "Keto Friendly",
         tags: [
             { text: "Best Seller", color: "#FFD700" },
@@ -27,7 +28,7 @@ const products = [
         subtitle: "Blueberry",
         price: 450,
         description: "Claridad mental e hidratación celular. Mantén tu mente afilada.",
-        image: "/pure-blue-2.jpg",
+        image: IMAGE_ASSETS.products.pureBlue.card.avif,
         topBadge: "Office Essential",
         tags: [
             { text: "Focus", color: "#AEEEEE" },
@@ -42,7 +43,7 @@ const products = [
         subtitle: "Uva",
         price: 450,
         description: "Recuperación profunda con Magnesio. Master the art of rest.",
-        image: "/hydra-rest-1.jpg",
+        image: IMAGE_ASSETS.products.hydraRest.card.avif,
         topBadge: "Sugar Free",
         tags: [
             { text: "Recovery", color: "#D8BFD8" },
@@ -57,7 +58,7 @@ const products = [
         subtitle: "Full Cycle Kit",
         price: 1200,
         description: "El ecosistema completo. Energía, Enfoque y Descanso en perfecta sincronía.",
-        image: "/Mix.jpg",
+        image: IMAGE_ASSETS.products.mix.card.avif,
         topBadge: "Best Value",
         tags: [
             { text: "Complete", color: "#1D1E20" },

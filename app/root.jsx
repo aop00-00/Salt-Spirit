@@ -14,18 +14,27 @@ import {
   useRouteLoaderData,
   useLocation,
 } from 'react-router';
-import { useEffect } from 'react';
-
-export const meta = () => {
-  return [{ title: 'Salt & Spirit' }, { name: 'description', content: 'Salt & Spirit Store' }];
-};
+import { useEffect, useRef } from 'react';
+import Lenis from 'lenis';
 
 import favicon from '~/assets/favicon.svg';
 import { FOOTER_QUERY, HEADER_QUERY } from '~/lib/fragments';
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SHARING_IMAGES,
+  buildRootJsonLd,
+  createPageSeo,
+  mergeRouteMeta,
+} from '~/lib/seo';
 import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
 import tailwindCss from './styles/tailwind.css?url';
 import { PageLayout } from './components/Layout/PageLayout';
+
+export const meta = ({data}) => {
+  return mergeRouteMeta({seo: data?.seo});
+};
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -93,6 +102,14 @@ export async function loader(args) {
     ...deferredData,
     ...criticalData,
     publicStoreDomain: CANONICAL_DOMAIN,
+    seo: createPageSeo({
+      title: SITE_NAME,
+      titleTemplate: `%s | ${SITE_NAME}`,
+      description: SITE_DESCRIPTION,
+      path: '/',
+      image: SHARING_IMAGES.default,
+      jsonLd: buildRootJsonLd(),
+    }),
     shop: getShopAnalytics({
       storefront,
       publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
@@ -164,6 +181,33 @@ function loadDeferredData({ context }) {
 export function Layout({ children }) {
   const nonce = useNonce();
   const location = useLocation();
+  const lenisRef = useRef(null);
+  const rafRef = useRef(0);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      anchors: true,
+      autoResize: true,
+      smoothWheel: true,
+      syncTouch: true,
+      stopInertiaOnNavigate: true,
+    });
+
+    lenisRef.current = lenis;
+
+    const raf = (time) => {
+      lenis.raf(time);
+      rafRef.current = window.requestAnimationFrame(raf);
+    };
+
+    rafRef.current = window.requestAnimationFrame(raf);
+
+    return () => {
+      window.cancelAnimationFrame(rafRef.current);
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
 
   // Handle route change PageViews (not initial load)
   useEffect(() => {
@@ -172,6 +216,8 @@ export function Layout({ children }) {
     if (typeof window !== 'undefined' && window.fbq) {
       window.fbq('track', 'PageView');
     }
+
+    lenisRef.current?.resize();
   }, [location.pathname]);
 
   const META_PIXEL_ID = '1276252354329816';
@@ -204,6 +250,7 @@ export function Layout({ children }) {
         />
         <noscript>
           <img
+            alt=""
             height="1"
             width="1"
             style={{ display: 'none' }}

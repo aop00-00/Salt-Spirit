@@ -268,23 +268,23 @@ type RouteFiles = {
     id: "routes/$";
     page: "/*";
   };
-  "../../../../..//Users/hardy/salt-spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/layout.jsx": {
-    id: "/Users/hardy/salt-spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/layout";
+  "../../../../../../../..//Users/dario/Desktop/WebDev/SALTANDSPIRIT/Salt-Spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/layout.jsx": {
+    id: "/Users/dario/Desktop/WebDev/SALTANDSPIRIT/Salt-Spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/layout";
     page: "/graphiql" | "/subrequest-profiler" | "/.well-known/appspecific/com.chrome.devtools.json" | "/";
   };
-  "../../../../..//Users/hardy/salt-spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/graphiql.jsx": {
+  "../../../../../../../..//Users/dario/Desktop/WebDev/SALTANDSPIRIT/Salt-Spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/graphiql.jsx": {
     id: "vite/virtual-routes/routes/graphiql";
     page: "/graphiql";
   };
-  "../../../../..//Users/hardy/salt-spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/subrequest-profiler.jsx": {
+  "../../../../../../../..//Users/dario/Desktop/WebDev/SALTANDSPIRIT/Salt-Spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/subrequest-profiler.jsx": {
     id: "vite/virtual-routes/routes/subrequest-profiler";
     page: "/subrequest-profiler";
   };
-  "../../../../..//Users/hardy/salt-spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/[.]well-known.appspecific.com[.]chrome[.]devtools[.]json.jsx": {
+  "../../../../../../../..//Users/dario/Desktop/WebDev/SALTANDSPIRIT/Salt-Spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/[.]well-known.appspecific.com[.]chrome[.]devtools[.]json.jsx": {
     id: "vite/virtual-routes/routes/[.]well-known.appspecific.com[.]chrome[.]devtools[.]json";
     page: "/.well-known/appspecific/com.chrome.devtools.json";
   };
-  "../../../../..//Users/hardy/salt-spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/index.jsx": {
+  "../../../../../../../..//Users/dario/Desktop/WebDev/SALTANDSPIRIT/Salt-Spirit/node_modules/@shopify/hydrogen/dist/vite/virtual-routes/routes/index.jsx": {
     id: "vite/virtual-routes/routes/index";
     page: "/";
   };

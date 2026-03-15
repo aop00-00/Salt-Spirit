@@ -7,10 +7,10 @@ import { useFetcher } from 'react-router';
  */
 export function CartSummary({ cart, layout }) {
   const className =
-    layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
+    layout === 'page' ? 'relative' : 'flex-none bg-white border-t border-gray-100 shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.05)] w-full block z-10';
 
   return (
-    <div aria-labelledby="cart-summary" className={`${className} bg-white px-6 py-6 pb-safe safe-area-bottom`}>
+    <div aria-labelledby="cart-summary" className={`${className} px-6 py-6 pb-8 safe-area-bottom`}>
       <h4 className="sr-only">Totals</h4>
 
       <CartDiscounts discountCodes={cart?.discountCodes} />

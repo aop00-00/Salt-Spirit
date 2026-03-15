@@ -8,9 +8,6 @@ import {
   getAdjacentAndFirstAvailableVariants,
   useSelectedOptionInUrlParam,
 } from '@shopify/hydrogen';
-import { ProductPrice } from '~/components/Product/ProductPrice';
-import { ProductImage } from '~/components/Product/ProductImage';
-import { ProductForm } from '~/components/Product/ProductForm';
 import { ProductGallery } from '~/components/Product/ProductGallery';
 import { ProductDetails } from '~/components/Product/ProductDetails';
 import { ProductOverview } from '~/components/Product/ProductOverview';
@@ -18,19 +15,76 @@ import { ProductComparison } from '~/components/Product/ProductComparison';
 import { ProductFAQ } from '~/components/Product/ProductFAQ';
 import { ProductReviews } from '~/components/Product/ProductReviews';
 import { redirectIfHandleIsLocalized } from '~/lib/redirect';
+import {
+  SHARING_IMAGES,
+  absoluteUrl,
+  createPageSeo,
+  mergeRouteMeta,
+  stripHtmlTags,
+} from '~/lib/seo';
 
 /**
  * @type {Route.MetaFunction}
  */
-export const meta = ({ data }) => {
-  return [
-    { title: `Hydrogen | ${data?.product.title ?? ''}` },
-    {
-      rel: 'canonical',
-      href: `/products/${data?.product.handle}`,
-    },
-  ];
+export const meta = ({data, matches}) => {
+  return mergeRouteMeta({matches, seo: data?.seo});
 };
+
+function getPrimaryProductImage(product) {
+  return (
+    product?.selectedOrFirstAvailableVariant?.image ||
+    product?.media?.nodes?.find((node) => node.__typename === 'MediaImage')?.image ||
+    null
+  );
+}
+
+function buildProductSeo(product) {
+  const title = product?.seo?.title || product?.title || 'Product';
+  const description =
+    product?.seo?.description ||
+    stripHtmlTags(product?.descriptionHtml) ||
+    'Salt & Spirit functional hydration product.';
+  const image = getPrimaryProductImage(product);
+  const seoImage = image?.url
+    ? {
+        type: 'image',
+        url: absoluteUrl(image.url),
+        width: image.width,
+        height: image.height,
+        altText: image.altText || title,
+      }
+    : SHARING_IMAGES.product;
+
+  return createPageSeo({
+    title,
+    description,
+    path: `/products/${product?.handle ?? ''}`,
+    image: seoImage,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: title,
+      description,
+      image: [seoImage.url],
+      brand: {
+        '@type': 'Brand',
+        name: 'Salt & Spirit',
+      },
+      offers: product?.selectedOrFirstAvailableVariant?.price
+        ? {
+            '@type': 'Offer',
+            availability: product.selectedOrFirstAvailableVariant.availableForSale
+              ? 'https://schema.org/InStock'
+              : 'https://schema.org/OutOfStock',
+            price: product.selectedOrFirstAvailableVariant.price.amount,
+            priceCurrency:
+              product.selectedOrFirstAvailableVariant.price.currencyCode,
+            url: absoluteUrl(`/products/${product?.handle ?? ''}`),
+          }
+        : undefined,
+    },
+  });
+}
 
 /**
  * @param {Route.LoaderArgs} args
@@ -67,7 +121,10 @@ async function loadCriticalData({ context, params, request }) {
 
     if (product?.id) {
       redirectIfHandleIsLocalized(request, { handle, data: product });
-      return { product };
+      return {
+        product,
+        seo: buildProductSeo(product),
+      };
     }
   } catch (e) {
     console.log("❌ Error fetching product from Storefront API:", e);
@@ -83,7 +140,7 @@ async function loadCriticalData({ context, params, request }) {
       product: {
         id: `mock-${handle}`,
         title: handle.charAt(0).toUpperCase() + handle.slice(1),
-        handle: handle,
+        handle,
         vendor: "Salt & Spirit",
         descriptionHtml: `<p>${mockContent.description}</p>`,
         media: {
@@ -103,7 +160,13 @@ async function loadCriticalData({ context, params, request }) {
         },
         options: [{ name: "Title", optionValues: [{ name: "Default Title", firstSelectableVariant: { id: `var-${handle}` } }] }],
         adjacentVariants: []
-      }
+      },
+      seo: createPageSeo({
+        title: handle.charAt(0).toUpperCase() + handle.slice(1),
+        description: mockContent.description,
+        path: `/products/${handle}`,
+        image: SHARING_IMAGES.product,
+      }),
     };
   }
 
@@ -116,7 +179,7 @@ async function loadCriticalData({ context, params, request }) {
  * Make sure to not throw any errors here, as it will cause the page to 500.
  * @param {Route.LoaderArgs}
  */
-function loadDeferredData({ context, params }) {
+function loadDeferredData({ context }) {
   // Put any API calls that is not critical to be available on first page render
   // For example: product reviews, product recommendations, social feeds.
 
@@ -166,7 +229,7 @@ export default function Product() {
     selectedOrFirstAvailableVariant: selectedVariant,
   });
 
-  const { title, descriptionHtml, handle } = product;
+  const { handle } = product;
 
   // Normalize handle to match content keys (e.g. 'pure-blue-1' -> 'pure-blue')
   // This allows duplicate/new products to share the same static content
@@ -373,7 +436,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
       }
     }
   }
-  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
+  query ProductPageRecommendedProducts($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
     products(first: 3, sortKey: BEST_SELLING) {
       nodes {
@@ -384,7 +447,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
 `;
 
 const PRODUCT_QUERY = `#graphql
-  query Product(
+  query ProductDetailsByHandle(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode

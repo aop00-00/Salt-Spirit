@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from 'react-router';
 import { getPaginationVariables } from '@shopify/hydrogen';
-import { PaginatedResourceSection } from '~/components/Common/PaginatedResourceSection';
+import { PaginatedResourceSection } from '~/components/Shared/PaginatedResourceSection';
 
 /**
  * @type {Route.MetaFunction}
