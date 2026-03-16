@@ -105,10 +105,24 @@ export function buildRootJsonLd() {
 }
 
 export function mergeRouteMeta({matches = [], seo}) {
-  const merged = getSeoMeta(
-    ...matches.map((match) => match.data?.seo).filter(Boolean),
-    seo,
-  );
+  const seoInputs = [...matches.map((match) => match.data?.seo).filter(Boolean), seo];
+  const merged = getSeoMeta(...seoInputs);
+  const socialMedia = [...seoInputs].reverse().find((input) => input?.media)?.media;
+  const primaryImage = Array.isArray(socialMedia) ? socialMedia[0] : socialMedia;
+
+  if (primaryImage?.url) {
+    if (!merged.some((tag) => tag.property === 'og:image')) {
+      merged.push({property: 'og:image', content: primaryImage.url});
+    }
+
+    if (!merged.some((tag) => tag.name === 'twitter:image')) {
+      merged.push({name: 'twitter:image', content: primaryImage.url});
+    }
+
+    if (primaryImage.altText && !merged.some((tag) => tag.name === 'twitter:image:alt')) {
+      merged.push({name: 'twitter:image:alt', content: primaryImage.altText});
+    }
+  }
 
   if (!merged.some((tag) => tag.name === 'twitter:card')) {
     merged.push({name: 'twitter:card', content: 'summary_large_image'});
