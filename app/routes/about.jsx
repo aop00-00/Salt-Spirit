@@ -98,7 +98,7 @@ export default function AboutPage() {
                                     initial={{ opacity: 0, y: 100, rotate: -3 }}
                                     animate={{ opacity: 1, y: 0, rotate: 0 }}
                                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                                    className="font-black leading-[0.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
+                                    className="font-black leading-[1.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
                                     style={{ fontSize: 'clamp(2.5rem, 9vw, 7rem)' }}
                                 >
                                     SOMOS EL
@@ -110,7 +110,7 @@ export default function AboutPage() {
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                                    className="font-black leading-[0.8] tracking-[-0.07em] inline-block mix-blend-difference"
+                                    className="font-black leading-[1.75] tracking-[-0.07em] inline-block mix-blend-difference"
                                     style={{
                                         WebkitTextStroke: '1px rgba(255,255,255,0.9)',
                                         color: 'transparent',
@@ -132,7 +132,7 @@ export default function AboutPage() {
                                     initial={{ opacity: 0, y: 100, rotate: -3 }}
                                     animate={{ opacity: 1, y: 0, rotate: 0 }}
                                     transition={{ delay: 0.4, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                                    className="font-black leading-[0.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
+                                    className="font-black leading-[1.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
                                     style={{ fontSize: 'clamp(2.5rem, 9vw, 7rem)' }}
                                 >
                                     ESTÁNDAR
@@ -163,13 +163,13 @@ export default function AboutPage() {
             </section>
 
             {/* El Origen - The Spark */}
-            <section id="origin-section" className="py-32 px-6 bg-gradient-to-b from-white to-gray-50">
+            <section id="origin-section" className="!py-20 !px-6 bg-gradient-to-b from-white to-gray-50">
                 <div className="max-w-5xl mx-auto">
                     <div className="mb-16">
                         <span className="inline-block px-4 py-2 bg-[#0063AD]/10 text-[#0063AD] text-xs uppercase tracking-widest font-bold rounded-full mb-4">
                             The Spark
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#1D1E20]">
+                        <h2 className="text-5xl md:text-7xl font-black leading-[0.85] tracking-[-0.04em] mb-6 text-[#1D1E20] uppercase">
                             El Origen
                         </h2>
                     </div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
             <section className="py-32 px-6 bg-[#1D1E20] text-white">
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-20">
-                        <h2 className="text-4xl md:text-6xl font-bold mb-6">Salt + Spirit</h2>
+                        <h2 className="text-5xl md:text-7xl font-black leading-[0.85] tracking-[-0.04em] mb-6 text-white uppercase drop-shadow-md">Salt + Spirit</h2>
                         <p className="text-xl md:text-2xl text-white/80">
                             La dualidad que define quiénes somos
                         </p>
@@ -263,7 +263,7 @@ export default function AboutPage() {
                         <span className="inline-block px-4 py-2 bg-gray-200 text-gray-600 text-xs uppercase tracking-widest font-bold rounded-full mb-4">
                             Our Standards
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#1D1E20]">
+                        <h2 className="text-5xl md:text-7xl font-black leading-[0.85] tracking-[-0.04em] mb-6 text-[#1D1E20] uppercase">
                             No Negociables
                         </h2>
                         <p className="text-xl text-gray-600">
@@ -306,7 +306,7 @@ export default function AboutPage() {
                         <span className="inline-block px-4 py-2 bg-[#0063AD]/10 text-[#0063AD] text-xs uppercase tracking-widest font-bold rounded-full mb-4">
                             The Science
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-8 text-[#1D1E20]">
+                        <h2 className="text-5xl md:text-7xl font-black leading-[0.85] tracking-[-0.04em] mb-8 text-[#1D1E20] uppercase">
                             Más allá del agua
                         </h2>
                     </div>
@@ -354,7 +354,7 @@ export default function AboutPage() {
                         <span className="inline-block px-4 py-2 bg-white/10 text-white/70 text-xs uppercase tracking-widest font-bold rounded-full mb-4">
                             Nuestros Pilares
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-6">La Tríada</h2>
+                        <h2 className="text-5xl md:text-7xl font-black leading-[0.85] tracking-[-0.04em] mb-6 text-white uppercase drop-shadow-md">La Tríada</h2>
                         <p className="text-xl md:text-2xl text-white/70">
                             El ciclo completo de tu día, cubierto
                         </p>
@@ -418,7 +418,7 @@ export default function AboutPage() {
             {/* Únete al Club - Call to Action Final */}
             <section className="py-40 px-6 bg-gradient-to-br from-gray-50 via-white to-gray-100">
                 <div className="max-w-5xl mx-auto text-center">
-                    <h2 className="text-5xl md:text-7xl font-bold mb-8 text-[#1D1E20]">
+                    <h2 className="text-6xl md:text-8xl font-black leading-[0.85] tracking-[-0.04em] mb-8 bg-gradient-to-br from-[#0063AD] via-[#E00B0B] to-[#6813AA] bg-clip-text text-transparent drop-shadow-xl inline-block uppercase pb-2">
                         Únete al Club
                     </h2>
                     <p className="text-xl md:text-2xl leading-relaxed mb-12 text-gray-700 max-w-3xl mx-auto">

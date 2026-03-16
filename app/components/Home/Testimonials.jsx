@@ -65,18 +65,25 @@ const Testimonials = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true }}
-                    className="flex flex-col items-center justify-center max-w-[640px] mx-auto mb-16"
+                    className="flex flex-col items-center text-center max-w-[640px] mx-auto mb-16"
                 >
-                    <div className="flex justify-center mb-6">
-                        <div className="border border-stone-200 bg-white py-1 px-4 rounded-full text-xs font-semibold text-stone-500 uppercase tracking-wider">Testimonios</div>
+                    <div className="flex items-center justify-center gap-3 mb-6">
+                        <div className="h-px w-8 bg-[#d97706]/30" />
+                        <span className="text-[10px] tracking-[0.3em] uppercase text-[#d97706] font-bold">Testimonios</span>
+                        <div className="h-px w-8 bg-[#d97706]/30" />
                     </div>
 
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 text-center mb-6">
-                        Lo que dicen nuestros clientes
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl text-stone-900 leading-[1.05] mb-6 tracking-tight">
+                        <span className="font-light">Lo que dicen</span>
+                        <br />
+                        <span className="font-bold">nuestros clientes</span>
                     </h2>
-                    <p className="text-center text-stone-500 text-lg leading-relaxed">
-                        Miles de personas ya transformaron su hidratación con Salt & Spirit.
-                    </p>
+
+                    <div className="border-b-2 border-[#d97706]/20 pb-4 max-w-xl mx-auto">
+                        <p className="text-stone-400 text-sm md:text-base leading-relaxed">
+                            Miles de personas ya transformaron su hidratación con Salt & Spirit.
+                        </p>
+                    </div>
                 </motion.div>
 
                 <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] h-[600px] overflow-hidden">

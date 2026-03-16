@@ -237,7 +237,7 @@ export default function Product() {
   const content = PRODUCT_CONTENT[handle] || PRODUCT_CONTENT[normalizedHandle] || PRODUCT_CONTENT['default'];
 
   return (
-    <div className="product">
+    <div className="product pt-24 md:pt-28">
       {/* Section 1: Product Gallery + Details */}
       <section className="w-full">
         <div className="flex flex-col md:flex-row gap-8 bg-[#FAFAFA]">

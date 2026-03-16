@@ -21,15 +21,21 @@ export const NewFooter = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-14 md:py-20">
           <Link
             to="/products"
-            className="group flex items-end md:items-center justify-between gap-6 no-underline !text-white"
+            className="group flex items-end md:items-center justify-between gap-6 !no-underline hover:!no-underline !text-white"
           >
-            <h2 className="text-[clamp(2rem,5.5vw,5rem)] font-bold leading-[0.95] tracking-tight text-white">
-              Elevate Your
-              <br />
-              <span className="bg-gradient-to-r from-[#0063AD] via-[#E00B0B] to-[#6813AA] bg-clip-text text-transparent">
-                Daily Ritual
-              </span>
-            </h2>
+            <div className="relative inline-block isolate">
+              <h2 className="relative z-10 text-[clamp(2rem,5.5vw,5rem)] font-bold leading-[0.95] tracking-tight text-white">
+                Elevate Your
+                <br />
+                <span className="bg-gradient-to-r from-[#0063AD] via-[#E00B0B] to-[#6813AA] bg-clip-text text-transparent">
+                  Daily Ritual
+                </span>
+              </h2>
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute left-0 right-0 bottom-[0.15em] z-0 h-[0.2em] origin-left scale-x-0 rounded-full bg-white/22 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+              />
+            </div>
             <motion.div
               className="flex h-12 w-12 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-full border-2 border-white/40 text-white group-hover:bg-white group-hover:text-[#1D1E20] transition-all duration-400"
               whileHover={{ rotate: 45 }}

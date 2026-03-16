@@ -23,11 +23,13 @@ const features = [
 
 export default function ScienceSection() {
     return (
-        <section className="science-section py-20 md:py-32 px-6 bg-[#F4F4F4] overflow-hidden">
+        <section className="science-section !py-20 md:!py-32 !px-6 bg-[#F4F4F4] overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
-                <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20 text-[#1D1E20] tracking-tight">
-                    INGENIERÍA PARA TU BIOLOGÍA,<br />DISEÑADO PARA TU VIDA.
+                <h2 className="text-4xl md:text-5xl lg:text-6xl text-center !mb-16 md:!mb-20 text-[#1D1E20] leading-[1.1] tracking-tight">
+                    <span className="font-light">Ingeniería para tu biología,</span>
+                    <br />
+                    <span className="font-bold">diseñado para tu vida.</span>
                 </h2>
 
                 {/* Features Grid */}
@@ -45,7 +47,7 @@ export default function ScienceSection() {
                             </h3>
 
                             {/* Description */}
-                            <p className="text-sm md:text-base leading-relaxed opacity-80 max-w-sm mx-auto text-center">
+                            <p className="text-sm md:text-base !text-[#1D1E20] leading-relaxed opacity-80 max-w-sm mx-auto text-center">
                                 {feature.description}
                             </p>
                         </div>

@@ -1,24 +1,7 @@
 import React, { useState } from "react";
-import { Layout, Pointer, Zap } from "lucide-react";
+import { FaDroplet, FaMoon, FaBolt } from "react-icons/fa6";
 import { Link } from "react-router";
 import { IMAGE_ASSETS } from "~/lib/imagePaths";
-
-// Internal Button Component
-const Button = ({ children, className = "", size = "default", ...props }) => {
-    const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50";
-    const sizeStyles = {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-    };
-    const variantStyles = "bg-primary text-white hover:bg-primary/90";
-
-    return (
-        <button className={`${baseStyles} ${sizeStyles[size]} ${variantStyles} ${className}`} {...props}>
-            {children}
-        </button>
-    );
-};
 
 // Internal Badge Component
 const Badge = ({ children, variant = "default", className = "", ...props }) => {
@@ -43,9 +26,10 @@ export default function Feature108({
     tabs = [
         {
             value: "tab-1",
-            icon: <Zap className="h-auto w-4 shrink-0" />,
+            icon: <FaDroplet className="h-auto w-4 shrink-0" />,
             label: "Pure Blue",
             productUrl: "/products/pure-blue",
+            activeClassName: "bg-blue-600 text-white shadow-lg scale-105 hover:bg-blue-700",
             content: {
                 badge: "Blueberry",
                 title: "Hidratación Esencial",
@@ -59,9 +43,10 @@ export default function Feature108({
         },
         {
             value: "tab-2",
-            icon: <Pointer className="h-auto w-4 shrink-0" />,
+            icon: <FaBolt className="h-auto w-4 shrink-0" />,
             label: "Vital Red",
             productUrl: "/products/vital-red",
+            activeClassName: "bg-red-600 text-white shadow-lg scale-105 hover:bg-red-700",
             content: {
                 badge: "Frutos Rojos",
                 title: "Impulso de Energía",
@@ -75,9 +60,10 @@ export default function Feature108({
         },
         {
             value: "tab-3",
-            icon: <Layout className="h-auto w-4 shrink-0" />,
+            icon: <FaMoon className="h-auto w-4 shrink-0" />,
             label: "Hydra-rest",
             productUrl: "/products/hydra-rest",
+            activeClassName: "bg-purple-600 text-white shadow-lg scale-105 hover:bg-purple-700",
             content: {
                 badge: "Uva",
                 title: "Descanso y Relajación",
@@ -94,73 +80,80 @@ export default function Feature108({
     const [activeTab, setActiveTab] = useState(tabs[0].value);
 
     return (
-        <section className="py-32 bg-white overflow-hidden">
+        <section className="py-16 md:py-20 overflow-hidden">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col items-center gap-4 text-center">
-                    <Badge variant="outline">{badge}</Badge>
-                    <h1 className="max-w-2xl text-3xl font-semibold md:text-4xl text-black">
-                        {heading}
+                <div className="flex flex-col items-center gap-4 md:gap-6 text-center mb-10 md:mb-14">
+                    <h1 className="max-w-3xl text-4xl md:text-5xl lg:text-6xl text-[#1a2e28] leading-[1.1] tracking-tight">
+                        <span className="font-light">Hydration like</span>
+                        <br />
+                        <span className="font-bold">never before</span>
                     </h1>
-                    <p className="text-gray-500">{description}</p>
+
+                    <p className="max-w-xl text-black text-sm md:text-base leading-relaxed border-r-2 border-[#d97706]/20 pr-6" style={{ color: '#000000' }}>
+                        {description}
+                    </p>
                 </div>
 
-                <div className="mt-16 flex flex-col md:flex-row gap-8 lg:gap-12 items-center">
-                    {/* Left Column: Vertical Tabs */}
-                    <div className="w-full md:w-1/3 lg:w-1/4 flex flex-col gap-2">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab.value}
-                                onClick={() => setActiveTab(tab.value)}
-                                className={`flex items-center justify-center gap-3 w-full rounded-xl px-5 py-4 font-semibold transition-all duration-200
-                  ${activeTab === tab.value
-                                        ? "bg-gray-100 text-black shadow-sm"
-                                        : "text-gray-400 hover:text-black hover:bg-gray-50"
-                                    }`}
-                            >
-                                <span className={`${activeTab === tab.value ? "text-black" : "text-gray-400"}`}>
-                                    {tab.icon}
-                                </span>
-                                {tab.label}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Right Column: Content Area */}
-                    <div className="w-full md:w-2/3 lg:w-3/4 rounded-3xl bg-gray-50 p-6 lg:p-12 min-h-[500px] flex items-center">
+                <div className="mt-8 md:mt-12">
+                    <div className="w-full rounded-3xl bg-gray-50 p-5 md:p-8 lg:p-10">
+                        {/* Content Area */}
                         {tabs.map((tab) => (
                             tab.value === activeTab && (
                                 <div
                                     key={tab.value}
-                                    className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 w-full animate-in fade-in zoom-in-95 duration-500"
+                                    className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 lg:gap-10 w-full animate-in fade-in zoom-in-95 duration-500"
                                 >
-                                    <div className="flex flex-col justify-center gap-3 md:gap-6 text-left">
+                                    <div className="order-2 md:order-1 flex flex-col justify-center gap-3 md:gap-4 text-left">
                                         <Badge variant="outline" className="w-fit bg-white border-gray-200 uppercase tracking-wide text-[10px] md:text-xs">
                                             {tab.content.badge}
                                         </Badge>
-                                        <h3 className="text-base md:text-3xl font-bold lg:text-4xl text-black leading-tight">
+                                        <h3 className="text-lg md:text-2xl font-bold lg:text-3xl text-black leading-tight">
                                             {tab.content.title}
                                         </h3>
-                                        <p className="text-gray-500 text-xs md:text-lg leading-relaxed">
+                                        <p className="!text-black text-xs md:text-sm lg:text-base leading-relaxed">
                                             {tab.content.description}
                                         </p>
                                         <Link
                                             to={tab.productUrl}
-                                            className="mt-2 md:mt-4 w-fit px-4 py-3 md:px-8 md:py-6 text-xs md:text-base bg-black text-white hover:bg-gray-800 rounded-full inline-flex items-center justify-center font-medium transition-colors"
+                                            className="mt-1 md:mt-3 w-fit px-4 py-2.5 md:px-6 md:py-3 text-xs md:text-sm bg-black text-white hover:bg-gray-800 rounded-full inline-flex items-center justify-center font-medium transition-colors"
                                             style={{ color: '#ffffff' }}
                                         >
                                             {tab.content.buttonText}
                                         </Link>
                                     </div>
-                                    <div className="flex items-center justify-center">
+                                    <div className="order-1 md:order-2 flex items-center justify-center">
                                         <img
                                             src={tab.content.imageSrc}
                                             alt={tab.content.imageAlt}
-                                            className="rounded-2xl w-full h-auto object-cover shadow-xl aspect-[4/5]"
+                                            className="rounded-2xl w-full h-auto object-cover shadow-xl aspect-[3/4] md:aspect-[4/5] max-h-[280px] md:max-h-[380px]"
                                         />
                                     </div>
                                 </div>
                             )
                         ))}
+
+                        <div className="mt-6 md:mt-8">
+                            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+                            {tabs.map((tab) => (
+                                <button
+                                    key={tab.value}
+                                    onClick={() => setActiveTab(tab.value)}
+                                    className={`flex items-center gap-2 rounded-full px-4 py-2.5 md:px-6 md:py-3 font-medium text-sm transition-all duration-300 cursor-pointer
+                                        ${activeTab === tab.value
+                                            ? tab.activeClassName
+                                            : "bg-white text-gray-500 hover:bg-gray-200 hover:text-gray-800"
+                                        }`}
+                                >
+                                    <span className="shrink-0">{tab.icon}</span>
+                                    <span className="hidden sm:inline">{tab.label}</span>
+                                </button>
+                            ))}
+                            </div>
+
+                            <p className="!mt-4 text-center text-[10px] italic text-gray-400 md:text-xs">
+                                Selecciona una opci&oacute;n para ver sus detalles
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

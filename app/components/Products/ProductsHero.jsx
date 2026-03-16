@@ -35,7 +35,7 @@ export default function ProductsHero() {
   return (
     <section
       ref={containerRef}
-      className="products-hero relative min-h-screen md:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0A0A0A]"
+      className="products-hero relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#0A0A0A] pb-14 md:min-h-screen md:pb-20 "
     >
       {/* Noise Texture */}
       <div
@@ -56,9 +56,9 @@ export default function ProductsHero() {
         <div className="absolute top-[45%] left-[50%] translate-x-[-50%] w-[50vw] h-[50vw] rounded-full bg-[#6813AA]/8 blur-[160px]" />
       </div>
 
-      <motion.div style={{ opacity: opacityOut }} className="relative z-10 w-full px-4 flex flex-col items-center justify-center mt-20 md:mt-16 max-w-[1600px] mx-auto">
+      <motion.div style={{ opacity: opacityOut }} className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-col items-center justify-center px-4 md:mt-16">
         {/* Headline — left-aligned stacked massive text */}
-        <div className="flex flex-col items-start w-full px-4 md:px-12">
+        <div className="flex flex-col items-start w-full px-4 md:px-12 mt-20">
           <div className="overflow-hidden w-full text-left">
             <motion.h1
               custom={0}
@@ -66,7 +66,7 @@ export default function ProductsHero() {
               animate="visible"
               variants={slideUp}
               className="font-black leading-[0.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
-              style={{ fontSize: 'clamp(3rem, 12vw, 10rem)' }}
+              style={{ fontSize: 'clamp(2rem, 8vw, 9rem)' }}
             >
               THE
             </motion.h1>
@@ -78,10 +78,10 @@ export default function ProductsHero() {
               initial="hidden"
               animate="visible"
               variants={slideUp}
-              className="font-black leading-[0.8] tracking-[-0.06em] bg-gradient-to-br from-[#0063AD] via-[#E00B0B] to-[#6813AA] bg-clip-text text-transparent drop-shadow-2xl"
+              className="font-black leading-[2.2] tracking-[-0.06em] bg-gradient-to-br from-[#0063AD] via-[#E00B0B] to-[#6813AA] bg-clip-text text-transparent drop-shadow-2xl"
               style={{
                 WebkitTextStroke: '1px rgba(255,255,255,0.08)',
-                fontSize: 'clamp(2.5rem, 11vw, 9rem)'
+                fontSize: 'clamp(2rem, 8vw, 10rem)'
               }}
             >
               PERFORMANCE
@@ -95,7 +95,7 @@ export default function ProductsHero() {
               animate="visible"
               variants={slideUp}
               className="font-black leading-[0.75] tracking-[-0.05em] text-white/90 mix-blend-plus-lighter"
-              style={{ fontSize: 'clamp(3rem, 12vw, 10rem)' }}
+              style={{ fontSize: 'clamp(2rem, 8vw, 9rem)' }}
             >
               STANDARD
             </motion.h1>
@@ -112,7 +112,7 @@ export default function ProductsHero() {
         >
           <div className="flex-1 max-w-xl text-center md:text-left">
             <p className="text-xl md:text-3xl text-white/50 leading-snug font-light tracking-wide">
-              Tecnología de hidratación<br />de precisión <span className="text-white/80 font-normal italic">diseñada para tu ritmo.</span>
+              Tecnología de hidratación<br />y precisión <span className="text-white/80 font-normal italic">diseñada para tu ritmo.</span>
             </p>
             <p className="mt-6 md:mt-8 text-lg text-white/40">
               <span className="text-white font-medium bg-gradient-to-r from-white/90 to-white/60 bg-clip-text text-transparent">0% Azúcar. 100% Esencial.</span><br />
@@ -122,9 +122,6 @@ export default function ProductsHero() {
 
           {/* Scroll indicator moved to the side */}
           <div className="mt-12 md:mt-0 flex flex-col items-center gap-4 text-white/30 hover:text-white/80 transition-colors cursor-pointer group">
-            <span className="text-xs font-bold uppercase tracking-[0.4em] rotate-0 md:-rotate-90 md:translate-y-12">
-              Explore
-            </span>
             <motion.div
               animate={{ y: [0, 15, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}

@@ -36,9 +36,23 @@ export default function BentoGridSection({ products = [] }) {
 
     return (
         <div className="py-24 px-4 max-w-7xl mx-auto overflow-hidden">
-            <div className="mb-12 text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">Hydrate your spirit</h2>
-                <p className="text-gray-600">To awaken the spirit within by redefining hydration—pure, natural, and elevated.</p>
+            <div className="mb-20 text-right flex flex-col items-end">
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#d97706]/40" />
+                    <div className="w-2 h-2 rotate-45 bg-[#d97706]" />
+                </div>
+
+                <h2 className="text-4xl md:text-6xl lg:text-7xl text-[#1a2e28] leading-[1.05] mb-6 tracking-tight">
+                    <span className="font-light">Hydrate your</span>
+                    <br />
+                    <span className="font-bold">spirit</span>
+                </h2>
+
+                <div className="mt-8 max-w-xl border-r-2 border-[#d97706]/20 pr-6">
+                    <p className="text-[#1a2e28] text-sm md:text-lg leading-relaxed">
+                        To awaken the spirit within by redefining hydration—pure, natural, and elevated.
+                    </p>
+                </div>
             </div>
             <BentoGridShowcase
                 integrations={

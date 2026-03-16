@@ -8,11 +8,23 @@ export default function ComboSection({ products }) {
     const combo = useCombo(products);
 
     return (
-        <div className="py-20 px-4 md:px-8 bg-white overflow-hidden" id="combo-section">
+        <div className="py-20 px-4 md:px-8 overflow-hidden" id="combo-section">
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#1a2e28] mb-4">El cuidado completo en un solo clic.</h2>
-                    <p className="text-gray-500 text-lg">Combina nuestros productos y recibe descuentos exclusivos.</p>
+                <div className="text-start mb-16">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl text-[#1a2e28] leading-[1.05] mb-5 tracking-tight">
+                        <span className="font-light">El cuidado completo</span>
+                        <br />
+                        <span className="font-bold">en un solo clic.</span>
+                    </h2>
+
+                    <div className="flex items-center justify-end gap-4 mb-4">
+                        <div className="h-px w-16 bg-[#d97706]/40" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
+                    </div>
+
+                    <p className="text-gray-400 text-[13px] tracking-[0.2em] uppercase">
+                        Combina nuestros productos y recibe descuentos exclusivos.
+                    </p>
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -43,35 +55,35 @@ function ComboProductCard({ product, isSelected, onToggle }) {
         <div
             onClick={onToggle}
             className={`
-                group relative flex flex-col justify-between
-                bg-[#F9F7F5] rounded-2xl md:rounded-3xl p-3 md:p-6 cursor-pointer transition-all duration-300
+                group relative min-h-[260px] md:min-h-[340px] overflow-hidden
+                rounded-2xl md:rounded-3xl cursor-pointer transition-all duration-300
                 border-2 ${isSelected ? 'border-[#d97706]' : 'border-transparent hover:border-gray-200'}
             `}
         >
+            {product.featuredImage && (
+                <Image
+                    data={product.featuredImage}
+                    sizes="(min-width: 64em) 33vw, (min-width: 45em) 50vw, 100vw"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+            )}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
+
             <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10">
                 <div className={`
-                    w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-colors
-                    ${isSelected ? 'bg-[#d97706] text-white' : 'bg-white text-transparent border border-gray-300 group-hover:border-gray-400'}
+                    w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-colors backdrop-blur-sm
+                    ${isSelected ? 'bg-[#d97706] text-white' : 'bg-white/85 text-transparent border border-white/70 group-hover:border-white'}
                 `}>
                     <Check className="w-[14px] h-[14px] md:w-[18px] md:h-[18px]" strokeWidth={3} />
                 </div>
             </div>
 
-            <div className="aspect-square w-full flex items-center justify-center mb-3 md:mb-6">
-                {product.featuredImage && (
-                    <Image
-                        data={product.featuredImage}
-                        sizes="(min-width: 45em) 400px, 50vw"
-                        className="object-contain w-3/4 h-3/4 mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
-                    />
-                )}
-            </div>
-
-            <div>
-                <div className="text-xs md:text-sm text-gray-500 font-medium mb-1">
+            <div className="relative z-[1] flex h-full flex-col justify-end p-4 md:p-6">
+                <div className="text-xs md:text-sm text-white/80 font-medium mb-1">
                     {product.priceRange?.minVariantPrice && <Money data={product.priceRange.minVariantPrice} />}
                 </div>
-                <h3 className="text-sm md:text-xl font-bold text-[#1a2e28] leading-tight">
+                <h3 className="text-sm md:text-xl font-bold text-white leading-tight max-w-[85%]">
                     {product.title.replace(/\(?mayoreo\)?/gi, '').trim()}
                 </h3>
             </div>
@@ -142,7 +154,7 @@ function ComboSummary({ combo }) {
                     }}
                 >
                     <div className={`
-                        w-full py-4 rounded-xl font-bold text-center transition-all
+                        w-full p-4 rounded-xl font-bold text-center transition-all
                         ${isEmpty
                             ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
                             : 'bg-white text-black hover:bg-gray-200 cursor-pointer'}

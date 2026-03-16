@@ -2,20 +2,13 @@ import { ProductPrice } from '~/components/Product/ProductPrice';
 import { ProductForm } from '~/components/Product/ProductForm';
 import { AddToCartButton } from '~/components/Cart/AddToCartButton';
 import { useAside } from '~/components/Layout/Aside';
-import { Truck, ShieldCheck, Clock, ChevronRight, Copy, Star } from 'lucide-react';
+import { Truck, ShieldCheck, Clock, ChevronRight, Star } from 'lucide-react';
 import { useState, Suspense } from 'react';
 import { Await } from 'react-router';
 
 export function ProductDetails({ product, selectedVariant, productOptions, recommendedProducts }) {
     const { title, descriptionHtml } = product;
     const [isShippingExpanded, setIsShippingExpanded] = useState(false);
-    const [copiedCode, setCopiedCode] = useState(false);
-
-    const handleCopyCode = () => {
-        navigator.clipboard.writeText('HYDRATE');
-        setCopiedCode(true);
-        setTimeout(() => setCopiedCode(false), 2000);
-    };
 
     // Mock data for demo - in production, this would come from product metafields
     const reviewCount = 196;
@@ -102,7 +95,7 @@ export function ProductDetails({ product, selectedVariant, productOptions, recom
 
                 {/* Promo Banner */}
                 <div className="bg-gradient-to-r from-yellow-50 to-green-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                    <div className="flex items-center justify-between">
+                    <div>
                         <div>
                             <p className="text-sm font-semibold text-green-800 mb-1">{promoDescription}</p>
                             <div className="flex items-center gap-2">
@@ -112,13 +105,6 @@ export function ProductDetails({ product, selectedVariant, productOptions, recom
                                 </code>
                             </div>
                         </div>
-                        <button
-                            onClick={handleCopyCode}
-                            className="bg-white border border-gray-300 hover:bg-gray-50 px-3 py-1.5 rounded text-sm font-medium transition-colors flex items-center gap-1.5"
-                        >
-                            <Copy size={14} />
-                            {copiedCode ? 'Copied!' : 'Copy'}
-                        </button>
                     </div>
                 </div>
 

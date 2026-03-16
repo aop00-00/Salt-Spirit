@@ -73,7 +73,7 @@ export default function BlurTextAnimation({
     return (
         <div
             ref={containerRef}
-            className={`flex items-center justify-center min-h-screen bg-white ${className}`}
+            className={`flex items-center justify-center min-h-screen ${className}`}
         >
             <div style={{ textAlign: 'center', width: '100%', padding: '0 5vw' }}>
                 <p
