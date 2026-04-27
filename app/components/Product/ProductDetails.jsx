@@ -54,22 +54,22 @@ export function ProductDetails({ product, selectedVariant, productOptions, recom
                     )}
                 </div>
 
-                {/* Affirm Payment */}
+                {/* Mercado Pago MSI */}
                 <div className="flex items-center gap-2 mb-6 text-sm text-gray-600">
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
                         <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
                         <path d="M2 10h20" stroke="currentColor" strokeWidth="2" />
                     </svg>
-                    <span>Starting at ${affirmMonthlyPrice}/mo with <span className="font-semibold">affirm</span></span>
+                    <span>MSI disponibles con <span className="font-semibold">Mercado Pago</span></span>
                 </div>
 
-                {/* Shipping & Support Accordion */}
+                {/* Envío y Soporte Accordion */}
                 <div className="border-t border-b border-gray-200 mb-6">
                     <button
                         onClick={() => setIsShippingExpanded(!isShippingExpanded)}
                         className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 transition-colors"
                     >
-                        <span className="font-semibold text-gray-900">Shipping & Support</span>
+                        <span className="font-semibold text-gray-900">Envío y Soporte</span>
                         <ChevronRight
                             size={20}
                             className={`text-gray-400 transition-transform ${isShippingExpanded ? 'rotate-90' : ''}`}
@@ -79,33 +79,23 @@ export function ProductDetails({ product, selectedVariant, productOptions, recom
                         <div className="pb-4 space-y-3">
                             <div className="flex items-center gap-3 text-sm text-gray-600">
                                 <Truck size={18} className="text-gray-400 flex-shrink-0" />
-                                <span>Free shipping $75+</span>
+                                <span>Envío gratis en compras mayores a $599 a todo México.</span>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-gray-600">
                                 <ShieldCheck size={18} className="text-gray-400 flex-shrink-0" />
-                                <span>30-Day, Money-Back Guarantee</span>
+                                <span>Satisfacción garantizada. </span>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-gray-600">
                                 <Clock size={18} className="text-gray-400 flex-shrink-0" />
-                                <span>24-Month, Hassle-Free Warranty</span>
+                                <span>Entrega estimada en 3 a 5 días hábiles</span>
                             </div>
                         </div>
                     )}
                 </div>
 
-                {/* Promo Banner */}
+                {/* Promo Banner sin código */}
                 <div className="bg-gradient-to-r from-yellow-50 to-green-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                    <div>
-                        <div>
-                            <p className="text-sm font-semibold text-green-800 mb-1">{promoDescription}</p>
-                            <div className="flex items-center gap-2">
-                                <span className="text-xs text-gray-600">Code:</span>
-                                <code className="bg-white px-2 py-1 rounded text-sm font-mono font-semibold">
-                                    {promoCode}
-                                </code>
-                            </div>
-                        </div>
-                    </div>
+                    <p className="text-sm font-semibold text-green-800">{promoDescription}</p>
                 </div>
 
                 {/* Product Options & Form */}
@@ -198,7 +188,7 @@ function PerfectMatchBundle({ selectedVariant, products }) {
                     <div
                         key={product.id}
                         onClick={() => toggleProduct(product.id)}
-                        className={`border-2 rounded-lg p-2 cursor-pointer transition-all ${selectedProducts.includes(product.id)
+                        className={`border-2 rounded-lg p-2 cursor-pointer transition-all flex flex-col items-center ${selectedProducts.includes(product.id)
                             ? 'border-orange-500 bg-orange-50'
                             : 'border-gray-200 hover:border-gray-300'
                             }`}
@@ -213,7 +203,7 @@ function PerfectMatchBundle({ selectedVariant, products }) {
                                 e.stopPropagation();
                                 toggleProduct(product.id);
                             }}
-                            className={`w-full text-xs font-semibold py-1.5 px-2 rounded transition-colors ${selectedProducts.includes(product.id)
+                            className={`w-full text-xs font-semibold py-1.5 px-2 rounded transition-colors text-center ${selectedProducts.includes(product.id)
                                 ? 'bg-orange-500 text-white hover:bg-orange-600'
                                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                 }`}

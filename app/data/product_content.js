@@ -36,7 +36,7 @@ export const PRODUCT_CONTENT = {
                 image: IMAGE_ASSETS.editorial.homeGallery.ritualPremium.avif
             },
             {
-                title: "Sabor Blue Raspberry",
+                title: "Sabor Blueberry",
                 description: "Un toque refrescante y dulce de frambuesa azul natural, sin dejar resabios químicos.",
                 image: IMAGE_ASSETS.products.pureBlue.card.avif
             },
@@ -73,12 +73,12 @@ export const PRODUCT_CONTENT = {
         overview: [
             {
                 title: "Energía Natural",
-                description: "Un boost de energía limpia proveniente del té verde y vitaminas B para tu día a día.",
+                description: "Un boost de energía limpia proveniente de la cafeina natural y L-teanina para potenciar tu concentración, sin nervisosismo ni caidas de energia.",
                 image: IMAGE_ASSETS.editorial.homeGallery.vitalRedEditorial.avif
             },
             {
-                title: "Sabor Fruit Punch",
-                description: "La mezcla cláscia de frutas tropicales con un toque cítrico revitalizante.",
+                title: "Sabor frutos rojos",
+                description: "La mezcla clásica de frutas tropicales con un toque cítrico revitalizante.",
                 image: IMAGE_ASSETS.products.vitalRed.card.avif
             },
             {
@@ -88,7 +88,7 @@ export const PRODUCT_CONTENT = {
             },
             {
                 title: "Vitaminas Antioxidantes",
-                description: "Reforzado con Vitamina C y Zinc para apoyar tu sistema inmune.",
+                description: "Reforzado con extracto natural de café, y un aporte de magnesio, potasio, sodio, betabel, allulosa y steviol.",
                 image: IMAGE_ASSETS.products.vitalRed.details.avif
             }
         ],
@@ -122,7 +122,7 @@ export const PRODUCT_CONTENT = {
                 image: IMAGE_ASSETS.products.hydraRest.details1.avif
             },
             {
-                title: "Sabor Lavanda-Miel",
+                title: "Sabor Uva",
                 description: "Un sabor suave y reconfortante para tu rutina de noche.",
                 image: IMAGE_ASSETS.products.hydraRest.details2.avif
             },

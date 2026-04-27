@@ -1,8 +1,8 @@
-import { Image } from '@shopify/hydrogen';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router';
 
-const Card = ({ title, src, color, i, progress, range, targetScale }) => {
+const Card = ({ title, src, color, link, i, progress, range, targetScale }) => {
     const scale = useTransform(progress, range, [1, targetScale]);
     return (
         <div className="h-[100vh] w-full sticky top-0 flex items-center justify-center p-4">
@@ -11,7 +11,23 @@ const Card = ({ title, src, color, i, progress, range, targetScale }) => {
                 className="relative flex flex-col items-center justify-center w-full h-[90vh] md:h-[80vh] rounded-3xl overflow-hidden origin-top shadow-2xl"
             >
                 <div className="absolute inset-0 z-0">
-                    <img className="w-full h-full object-cover" src={src} alt={title || "Background"} />
+                    <img className="w-full h-full object-cover" src={src} alt={title || 'Background'} />
+                </div>
+
+                <div className="absolute inset-0 bg-black/30 z-10" />
+
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 z-20">
+                    <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight drop-shadow-lg text-center">
+                        {title}
+                    </h2>
+                    <Link
+                        to={link}
+                        className="px-7 py-2.5 rounded-full text-sm font-semibold text-white
+                            bg-white/15 backdrop-blur-md border border-white/30
+                            hover:bg-white/30 transition-all duration-300"
+                    >
+                        Comprar
+                    </Link>
                 </div>
             </motion.div>
         </div>

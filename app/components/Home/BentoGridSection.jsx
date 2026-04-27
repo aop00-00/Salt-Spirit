@@ -1,6 +1,6 @@
 import React from "react";
 import { BentoGridShowcase } from "./BentoGridShowcase";
-import { Zap, Heart, Star, Users, Check } from "lucide-react";
+import { Zap, Star, Check, PackageCheck, Truck } from "lucide-react";
 import { AddToCartButton } from "~/components/Cart/AddToCartButton";
 import { useAside } from "~/components/Layout/Aside";
 import { IMAGE_ASSETS } from "~/lib/imagePaths";
@@ -64,23 +64,29 @@ export default function BentoGridSection({ products = [] }) {
                     </Card>
                 }
                 featureTags={
-                    <Card title="Join the Club" subtitle="Únete a los que ya elevaron su estándar." className="bg-blue-50/80 border border-blue-100">
-                        <div className="flex -space-x-2 mt-4">
-                            {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-8 h-8 rounded-full bg-gray-300 border-2 border-white" />
-                            ))}
+                    <Card title="Envío Gratis" subtitle="A todo México." className="bg-emerald-50/80 border border-emerald-100">
+                        <div className="absolute right-0 bottom-0 opacity-10">
+                            <Truck size={120} className="text-emerald-500" />
                         </div>
-                        <div className="mt-2 text-xs font-semibold text-blue-600">
-                            +1,000 espíritus hidratados.
-                        </div>
-                        <div className="absolute right-4 bottom-4">
-                            <Users className="text-blue-400" size={32} />
+                        <div className="flex flex-col gap-2 mt-4">
+                            <div className="flex items-center gap-2 text-sm text-emerald-800 font-medium">
+                                <PackageCheck size={16} className="text-emerald-600 shrink-0" />
+                                Empaque premium protegido
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-emerald-800 font-medium">
+                                <Truck size={16} className="text-emerald-600 shrink-0" />
+                                Entrega en 3–5 días hábiles
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-emerald-800 font-medium">
+                                <Check size={16} className="text-emerald-600 shrink-0" />
+                                Rastreo en tiempo real
+                            </div>
                         </div>
                     </Card>
                 }
                 mainFeature={
                     <Card
-                        title="Aesthetic Performance"
+
                         className="bg-stone-900 border border-stone-800 text-white relative group"
                         background={
                             <img src={IMAGE_ASSETS.marketing.bento.elevateRitual.avif} className="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-500" alt="Ritual" />
@@ -126,7 +132,7 @@ export default function BentoGridSection({ products = [] }) {
                 }
                 statistic={
                     <Card
-                        title="The S&S Standard"
+
                         className="bg-green-50/80 border border-green-100 relative overflow-hidden"
                         background={
                             <>

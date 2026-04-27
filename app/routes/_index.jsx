@@ -1,6 +1,5 @@
-import { Await, useLoaderData, Link } from 'react-router';
+import { Await, useLoaderData } from 'react-router';
 import { Suspense, lazy } from 'react';
-import { Image } from '@shopify/hydrogen';
 import { ClientOnly } from '~/components/Shared/ClientOnly';
 import { CardsParallax } from '~/components/Shared/CardsParallax';
 import BlurTextAnimation from '~/components/Effects/BlurTextAnimation';
@@ -45,24 +44,14 @@ export const meta = ({matches}) => {
  * @param {Route.LoaderArgs} args
  */
 export async function loader(args) {
-  // Start fetching non-critical data without blocking time to first byte
   const deferredData = loadDeferredData(args);
-
-  // Await the critical data required to render initial state of the page
   const criticalData = await loadCriticalData(args);
-
   return { ...deferredData, ...criticalData };
 }
 
-/**
- * Load data necessary for rendering content above the fold. This is the critical data
- * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
- * @param {Route.LoaderArgs}
- */
 async function loadCriticalData({ context }) {
   const [{ collections }] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
-    // Add other queries here, so that they are loaded in parallel
   ]);
 
   return {
@@ -70,17 +59,10 @@ async function loadCriticalData({ context }) {
   };
 }
 
-/**
- * Load data for rendering content below the fold. This data is deferred and will be
- * fetched after the initial page load. If it's unavailable, the page should still 200.
- * Make sure to not throw any errors here, as it will cause the page to 500.
- * @param {Route.LoaderArgs}
- */
 function loadDeferredData({ context }) {
   const recommendedProducts = context.storefront
     .query(RECOMMENDED_PRODUCTS_QUERY)
     .catch((error) => {
-      // Log query errors, but don't throw them so the page can still render
       console.error(error);
       return null;
     });
@@ -94,22 +76,6 @@ export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
 
-  // Extract images for the gallery from the deferred recommended products
-  // We need to use <Await> or just use placeholders if data isn't ready immediately,
-  // but for the Hero we ideally want critical data. 
-  // For now, let's try to grab images if they exist, or use a placeholder set if loading.
-  // Actually, since recommendedProducts is deferred, we might want to move it to critical 
-  // OR use the featuredCollection image duplicated for now to serve the hero immediately.
-
-  // Strategy: Pass empty array initially and let it populate? 
-  // Better: Use specific hero images if available, or fall back to collection image.
-
-  // For this demo, let's assume we want to show the recommended products in the gallery.
-  // We'll wrap the gallery in Await? No, that delays the Hero.
-  // Let's us the featuredCollection image + some static backups or fetch more in critical if needed.
-  // For now, I will use the featured collection image and some placeholders/duplicates to fill the gallery
-  // just to verify the component works, then we can refine the data source.
-
   const heroImages = [
     IMAGE_ASSETS.editorial.homeGallery.ritualPremium.avif,
     IMAGE_ASSETS.editorial.homeGallery.scienceAndFlavor.avif,
@@ -122,66 +88,92 @@ export default function Homepage() {
 
   return (
     <div className="home w-full">
-      {/* 
-        Scroll Track: 400vh height gives the user "space" to scroll through 
-        while the content stays pinned (sticky). 
-      */}
-      <div className="hero-track h-[400vh] relative mb-10">
-        <div className="hero-sticky sticky top-0 h-screen w-full overflow-hidden bg-base">
-          <ClientOnly fallback={<div className="h-full w-full flex items-center justify-center">Loading Experience...</div>}>
-            <Suspense fallback={<div>Loading 3D...</div>}>
-              {(() => {
-                // Duplicate to ensure enough items for infinite effect
-                // We repeat the 7 images 2 times to get 14 items, enough for smooth loop
-                const galleryImages = [...heroImages, ...heroImages];
-                return <InfiniteGallery images={galleryImages} className="h-full w-full" />;
-              })()}
-            </Suspense>
-          </ClientOnly>
 
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-            <img src={IMAGE_ASSETS.branding.logo.avif} alt="Salt & Spirit" className="w-[80vw] max-w-[600px] h-auto object-contain mix-blend-difference opacity-90" />
+      {/* 1. HERO — 100vh con propuesta de valor y CTA visible */}
+      <div className="relative h-screen w-full overflow-hidden bg-base">
+        <ClientOnly fallback={<div className="h-full w-full flex items-center justify-center">Loading...</div>}>
+          <Suspense fallback={null}>
+            <InfiniteGallery images={[...heroImages, ...heroImages]} className="h-full w-full" />
+          </Suspense>
+        </ClientOnly>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-6 pointer-events-none">
+          <img
+            src={IMAGE_ASSETS.branding.logo.avif}
+            alt="Salt & Spirit"
+            className="w-[70vw] max-w-[500px] h-auto object-contain mix-blend-difference opacity-90"
+          />
+          <p className="text-white text-sm md:text-base tracking-widest uppercase bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+            Electrolitos premium para tu ritual diario
+          </p>
+          <a
+            href="#productos"
+            className="pointer-events-auto mt-2 px-8 py-3 bg-white text-black text-sm font-semibold rounded-full hover:bg-white/90 transition-colors"
+          >
+            Ver productos
+          </a>
+        </div>
+      </div>
+
+      {/* 2. PRODUCT TABS — presenta los 3 productos */}
+      <div id="productos">
+        <Feature108 />
+      </div>
+
+      {/* 3. SOCIAL PROOF RAPIDO — strip de confianza antes del precio */}
+      <div className="py-8 px-4 border-y border-gray-100 bg-stone-50">
+        <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 text-center">
+          <div>
+            <div className="text-2xl font-bold text-[#1a2e28]">+1,000</div>
+            <div className="text-xs text-gray-500 uppercase tracking-widest mt-1">Clientes satisfechos</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[#1a2e28]">&#9733; 4.9</div>
+            <div className="text-xs text-gray-500 uppercase tracking-widest mt-1">Calificacion promedio</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[#1a2e28]">0%</div>
+            <div className="text-xs text-gray-500 uppercase tracking-widest mt-1">Azucar anadida</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[#1a2e28]">100%</div>
+            <div className="text-xs text-gray-500 uppercase tracking-widest mt-1">Ingredientes naturales</div>
           </div>
         </div>
       </div>
 
-
-      <FeaturedCollection collection={data.featuredCollection} />
-
-      <Suspense fallback={<div>Loading Parallax...</div>}>
+      {/* 4. CARDS PARALLAX — productos con scroll */}
+      <Suspense fallback={null}>
         <Await resolve={data.recommendedProducts}>
           {(response) => {
             if (!response?.products?.nodes?.length) return null;
+            const order = ['vital-red', 'hydra-rest', 'pure-blue'];
+            const sorted = order
+              .map(handle => response.products.nodes.find(p => p.handle === handle))
+              .filter(Boolean);
 
-            const cards = response.products.nodes
+            const cards = sorted
               .filter(product => !product.featuredImage?.url?.includes('b3cb-d8e3-43c2-a620-1358ac674531'))
               .map((product, i) => ({
                 title: product.title,
                 description: product.description,
                 src: product.featuredImage?.url || '',
                 link: `/products/${product.handle}`,
-                color: i % 2 === 0 ? '#F4F4F4' : '#1D1E20', // Alternating colors
+                color: i % 2 === 0 ? '#F4F4F4' : '#1D1E20',
                 textColor: i % 2 === 0 ? '#1D1E20' : '#F4F4F4',
-                tag: 'Product'
+                tag: 'Product',
               }));
-
             return <CardsParallax items={cards} />;
           }}
         </Await>
       </Suspense>
 
-
-
-
-
-      <Suspense fallback={<div>Loading Combo...</div>}>
+      {/* 5. COMBO BUILDER — upsell cuando el usuario ya conoce los productos */}
+      <Suspense fallback={null}>
         <Await resolve={data.recommendedProducts}>
           {(response) => {
             if (!response?.products?.nodes?.length) return null;
-
-            // Override prices for demo
             const products = response.products.nodes.slice(0, 4).map(p => {
-              // Check if title contains 'Mix' (case insensitive)
               const isMix = p.title.toLowerCase().includes('mix');
               return {
                 ...p,
@@ -189,19 +181,18 @@ export default function Homepage() {
                   ...p.priceRange,
                   minVariantPrice: {
                     ...p.priceRange.minVariantPrice,
-                    amount: isMix ? '599.00' : '499.00'
-                  }
-                }
+                    amount: isMix ? '599.00' : '499.00',
+                  },
+                },
               };
             });
-
             return <ComboSection products={products} />;
           }}
         </Await>
       </Suspense>
 
-      <Feature108 />
-      <Suspense fallback={<div>Loading Bento Grid...</div>}>
+      {/* 6. BENTO GRID — beneficios + CTA secundario */}
+      <Suspense fallback={null}>
         <Await resolve={data.recommendedProducts}>
           {(response) => {
             if (!response?.products?.nodes?.length) return <BentoGridSection />;
@@ -209,39 +200,19 @@ export default function Homepage() {
           }}
         </Await>
       </Suspense>
-      <Slideshow />
+
+      {/* 7. TESTIMONIOS — social proof profundo */}
       <Testimonials />
+
+      {/* 8. SLIDESHOW — cierre editorial de marca */}
+      <Slideshow />
+
+      {/* 9. BLUR TEXT — tagline final */}
       <BlurTextAnimation />
 
-    </div >
+    </div>
   );
 }
-
-/**
- * @param {{
- *   collection: FeaturedCollectionFragment;
- * }}
- */
-function FeaturedCollection({ collection }) {
-  if (!collection) return null;
-  const image = collection?.image;
-  return (
-    <Link
-      className="featured-collection"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && (
-        <div className="featured-collection-image">
-          <Image data={image} sizes="100vw" />
-        </div>
-      )}
-
-    </Link>
-  );
-}
-
-// Removing RecommendedProducts definition since it is replaced
-
 
 const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
