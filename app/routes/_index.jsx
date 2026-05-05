@@ -181,7 +181,7 @@ export default function Homepage() {
                   ...p.priceRange,
                   minVariantPrice: {
                     ...p.priceRange.minVariantPrice,
-                    amount: isMix ? '599.00' : '499.00',
+                    amount: isMix ? '549.00' : '499.00',
                   },
                 },
               };
